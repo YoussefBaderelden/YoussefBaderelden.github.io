@@ -12,7 +12,7 @@ export function About() {
         >
           <p className="text-xs uppercase tracking-[0.28em] text-[#2ee6c5]">About</p>
           <h2 className="mt-3 font-display text-4xl leading-tight sm:text-5xl">
-            Engineer who actually ships live video.
+            Shipped on stores. Built for live.
           </h2>
         </motion.div>
         <motion.div
@@ -21,21 +21,18 @@ export function About() {
           viewport={{ once: true }}
           className="space-y-5 text-lg leading-relaxed text-[#8b93a7]"
         >
+          <p>{profile.summary}</p>
           <p>
-            I’m {profile.name}, a Flutter developer in {profile.city}. Final-year student in{" "}
-            {profile.major} at {profile.university}. By day I work at{" "}
-            <span className="text-[#f3eee6]">TKDS Media</span> on sports broadcast apps. On the
-            side I build products like Pasty — design your own cake, then buy sweets — and I spent
-            serious time inside BikMedia’s live stack.
+            I’m {profile.name}, based in {profile.city}. {profile.year} in {profile.major} at{" "}
+            {profile.university}. At <span className="text-[#f3eee6]">TKDS MENA</span> I own the
+            mobile surface for a broadcasting company — Fizz Party, TKDS Streamer, NGN, TKDS Radio —
+            then the rest of the media family, VAR, and scoring tools.
           </p>
           <p>
-            The work I care about sits at the edge of the camera: Agora rooms, WebRTC peer
-            connections, NDI into OBS, beauty filters on the encode path, and the unglamorous
-            optimizations that keep a live chat from melting a phone.
-          </p>
-          <p>
-            Trained through Route and DEPI. Comfortable owning iOS, Android, Windows, and web
-            from the same Dart codebase.
+            Outside the CV line-items: BikMedia (Agora, filters, Game Live fetcher), Pasty (design
+            your cake and buy sweets — launching soon), Windows VAR, NDI into OBS. Trained at DEPI,
+            Route Academy, and Digital HUB. I care about UI that feels finished and streams that
+            don’t drop frames.
           </p>
         </motion.div>
       </div>

@@ -17,7 +17,7 @@ export function Hero() {
             className="mb-5 flex items-center gap-2 text-xs uppercase tracking-[0.28em] text-[#2ee6c5]"
           >
             <span className="live-dot inline-block h-2 w-2 rounded-full bg-[#e30613]" />
-            Available · Cairo · Flutter
+            Flutter · TKDS MENA · Cairo
           </motion.p>
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
@@ -35,8 +35,9 @@ export function Hero() {
             transition={{ delay: 0.25 }}
             className="mt-6 max-w-xl text-lg text-[#8b93a7] sm:text-xl"
           >
-            {profile.role}. I ship live video, sports broadcast tools, and product apps
-            across iOS, Android, Windows, and web — Agora, WebRTC, NDI, and Flutter.
+            {profile.role} at TKDS MENA. Four apps live on the App Store and Google Play.
+            I also build Agora rooms, WebRTC, NDI, payments, and product apps the CV never
+            fully listed.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -73,8 +74,8 @@ export function Hero() {
               className="aspect-[3/4] w-full object-cover object-[center_18%]"
             />
             <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-5">
-              <p className="font-display text-lg">Flutter Engineer</p>
-              <p className="text-sm text-[#8b93a7]">TKDS Media · Cairo</p>
+              <p className="font-display text-lg">Flutter Mobile Developer</p>
+              <p className="text-sm text-[#8b93a7]">TKDS MENA · Cairo</p>
             </div>
           </div>
         </motion.div>

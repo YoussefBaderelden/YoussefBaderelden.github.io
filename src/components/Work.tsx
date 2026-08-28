@@ -64,15 +64,24 @@ function Card({ project, large }: { project: Project; large?: boolean }) {
             </span>
           ))}
         </div>
-        {project.github && (
-          <a
-            href={project.github}
-            target="_blank"
-            rel="noreferrer"
-            className="mt-5 text-sm text-[#2ee6c5] hover:underline"
-          >
-            View on GitHub →
-          </a>
+        {(project.appStore || project.playStore || project.github) && (
+          <div className="mt-5 flex flex-wrap gap-4 text-sm text-[#2ee6c5]">
+            {project.appStore && (
+              <a href={project.appStore} target="_blank" rel="noreferrer" className="hover:underline">
+                App Store →
+              </a>
+            )}
+            {project.playStore && (
+              <a href={project.playStore} target="_blank" rel="noreferrer" className="hover:underline">
+                Google Play →
+              </a>
+            )}
+            {project.github && (
+              <a href={project.github} target="_blank" rel="noreferrer" className="hover:underline">
+                GitHub →
+              </a>
+            )}
+          </div>
         )}
       </div>
     </article>

@@ -9,12 +9,12 @@ export function Experience() {
       <div className="mt-12 space-y-0">
         {experience.map((job, i) => (
           <motion.article
-            key={job.org + job.role}
+            key={job.org + job.role + job.period}
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.05 }}
-            className="grid gap-4 border-t border-white/8 py-8 md:grid-cols-[200px_1fr]"
+            className="grid gap-4 border-t border-white/8 py-8 md:grid-cols-[220px_1fr]"
           >
             <p className="text-sm text-[#8b93a7]">{job.period}</p>
             <div>
@@ -32,14 +32,14 @@ export function Experience() {
             </div>
           </motion.article>
         ))}
-        <article className="grid gap-4 border-t border-white/8 py-8 md:grid-cols-[200px_1fr]">
-          <p className="text-sm text-[#8b93a7]">{profile.year}</p>
+        <article className="grid gap-4 border-t border-white/8 py-8 md:grid-cols-[220px_1fr]">
+          <p className="text-sm text-[#8b93a7]">{profile.educationPeriod}</p>
           <div>
-            <h3 className="font-display text-2xl">B.Sc. Electronics & Communication</h3>
+            <h3 className="font-display text-2xl">B.Sc. Computer Engineering</h3>
             <p className="mt-1 text-[#2ee6c5]">{profile.university}</p>
             <p className="mt-4 text-[#8b93a7]">
-              Final-year engineering student. The ECE background is why realtime media — codecs,
-              networks, latency — feels like home, not a black box.
+              {profile.year}. The engineering course load — networks, signals, systems — is why live
+              video, codecs, and latency feel like the job, not a mystery.
             </p>
           </div>
         </article>
