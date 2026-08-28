@@ -10,8 +10,8 @@ export function About() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
         >
-          <p className="text-xs uppercase tracking-[0.28em] text-[#2ee6c5]">About</p>
-          <h2 className="mt-3 font-display text-4xl leading-tight sm:text-5xl">
+          <p className="text-xs uppercase tracking-[0.28em] text-signal">About</p>
+          <h2 className="mt-3 font-display text-4xl leading-tight text-ink sm:text-5xl">
             Mid-level. Shipped on stores. Built for live.
           </h2>
         </motion.div>
@@ -19,16 +19,16 @@ export function About() {
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="space-y-5 text-lg leading-relaxed text-[#8b93a7]"
+          className="space-y-5 text-lg leading-relaxed text-mute"
         >
           <p>{profile.summary}</p>
           <p>
             I’m {profile.name}, based in {profile.city}. Mid-level Flutter engineer, {profile.year}{" "}
             in {profile.major} at {profile.university}. At{" "}
-            <span className="text-[#f3eee6]">TKDS MENA</span> I own production mobile for a
-            broadcasting company — not intern tasks. Ten apps live on Android or iOS: Fizz Party,
-            TKDS Streamer, NGN, TKDS Sports, BikMedia, TKDS Radio, Maadi Sports, ASN TV, Sports
-            Flix, and Southwest Ohio.
+            <span className="text-ink">TKDS MENA</span> I own production mobile for a broadcasting
+            company — not intern tasks. Ten apps live on Android or iOS: Fizz Party, TKDS Streamer,
+            NGN, TKDS Sports, BikMedia, TKDS Radio, Maadi Sports, ASN TV, Sports Flix, and Southwest
+            Ohio.
           </p>
           <p>
             Also: BikMedia (Agora, filters, Game Live fetcher), Pasty (launching soon), Windows VAR,

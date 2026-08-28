@@ -24,10 +24,7 @@ export function ProjectDetail({ project }: { project: Project }) {
         style={{ background: project.accent }}
       />
       <div className="relative mx-auto max-w-5xl">
-        <a
-          href="#work"
-          className="inline-flex items-center gap-2 text-sm text-[#8b93a7] transition hover:text-[#2ee6c5]"
-        >
+        <a href="#work" className="inline-flex items-center gap-2 text-sm text-mute transition hover:text-signal">
           ← Back to work
         </a>
 
@@ -39,9 +36,9 @@ export function ProjectDetail({ project }: { project: Project }) {
           className="mt-8 grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start"
         >
           <div
-            className="relative flex min-h-[320px] items-center justify-center overflow-hidden rounded-[2rem] border border-white/10 p-10"
+            className="relative flex min-h-[320px] items-center justify-center overflow-hidden rounded-[2rem] border border-line p-10 shadow-[var(--shadow-card)]"
             style={{
-              background: `radial-gradient(circle at 30% 20%, ${project.accent}44, transparent 55%), #0c0e14`,
+              background: `radial-gradient(circle at 30% 20%, ${project.accent}44, transparent 55%), var(--well)`,
             }}
           >
             {project.logo ? (
@@ -60,29 +57,26 @@ export function ProjectDetail({ project }: { project: Project }) {
           <div>
             <div className="flex flex-wrap gap-2">
               {project.liveNo && (
-                <span className="rounded-full bg-[#e30613] px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-white">
+                <span className="rounded-full bg-live px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-white">
                   {pad(project.liveNo)} · Live
                 </span>
               )}
-              <span className="rounded-full border border-white/10 px-3 py-1 text-[10px] uppercase tracking-wider text-[#8b93a7]">
+              <span className="rounded-full border border-line px-3 py-1 text-[10px] uppercase tracking-wider text-mute">
                 {categoryLabel[project.category]}
               </span>
-              <span className="rounded-full bg-[#2ee6c5]/15 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-[#2ee6c5]">
+              <span className="rounded-full bg-signal/15 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-signal">
                 {published}
               </span>
             </div>
 
-            <h1 className="mt-4 font-display text-4xl leading-tight sm:text-6xl">{project.name}</h1>
-            <p className="mt-4 text-lg text-[#c5c9d6]">{project.blurb}</p>
+            <h1 className="mt-4 font-display text-4xl leading-tight text-ink sm:text-6xl">{project.name}</h1>
+            <p className="mt-4 text-lg text-ink/80">{project.blurb}</p>
 
             <div className="mt-6">
-              <p className="text-xs uppercase tracking-[0.22em] text-[#8b93a7]">Platforms</p>
+              <p className="text-xs uppercase tracking-[0.22em] text-mute">Platforms</p>
               <div className="mt-2 flex flex-wrap gap-2">
                 {project.platforms.map((p) => (
-                  <span
-                    key={p}
-                    className="rounded-full border border-white/15 px-3 py-1 text-sm text-[#f3eee6]"
-                  >
+                  <span key={p} className="rounded-full border border-line px-3 py-1 text-sm text-ink">
                     {p}
                   </span>
                 ))}
@@ -90,18 +84,15 @@ export function ProjectDetail({ project }: { project: Project }) {
             </div>
 
             <div className="mt-8">
-              <p className="text-xs uppercase tracking-[0.22em] text-[#8b93a7]">About this app</p>
-              <p className="mt-3 text-base leading-relaxed text-[#8b93a7]">{project.story}</p>
+              <p className="text-xs uppercase tracking-[0.22em] text-mute">About this app</p>
+              <p className="mt-3 text-base leading-relaxed text-mute">{project.story}</p>
             </div>
 
             <div className="mt-8">
-              <p className="text-xs uppercase tracking-[0.22em] text-[#8b93a7]">Stack</p>
+              <p className="text-xs uppercase tracking-[0.22em] text-mute">Stack</p>
               <div className="mt-3 flex flex-wrap gap-2">
                 {project.tags.map((t) => (
-                  <span
-                    key={t}
-                    className="rounded-full bg-white/5 px-3 py-1.5 text-sm text-[#d7fff6]"
-                  >
+                  <span key={t} className="rounded-full bg-well px-3 py-1.5 text-sm text-ink">
                     {t}
                   </span>
                 ))}
@@ -115,7 +106,7 @@ export function ProjectDetail({ project }: { project: Project }) {
                     href={project.appStore}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex rounded-full border border-[#2ee6c5] px-5 py-3 text-sm font-semibold text-[#2ee6c5] transition hover:bg-[#2ee6c5] hover:text-[#04110e]"
+                    className="inline-flex rounded-full border border-signal px-5 py-3 text-sm font-semibold text-signal transition hover:bg-signal hover:text-on-signal"
                   >
                     Open App Store
                   </a>
@@ -125,7 +116,7 @@ export function ProjectDetail({ project }: { project: Project }) {
                     href={project.playStore}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex rounded-full bg-[#2ee6c5] px-5 py-3 text-sm font-semibold text-[#04110e] transition hover:bg-[#7ff5df]"
+                    className="btn-signal inline-flex rounded-full px-5 py-3 text-sm font-semibold transition"
                   >
                     Open Google Play
                   </a>
@@ -135,7 +126,7 @@ export function ProjectDetail({ project }: { project: Project }) {
                     href={project.microsoftStore}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex rounded-full bg-[#2ee6c5] px-5 py-3 text-sm font-semibold text-[#04110e] transition hover:bg-[#7ff5df]"
+                    className="btn-signal inline-flex rounded-full px-5 py-3 text-sm font-semibold transition"
                   >
                     Open Microsoft Store
                   </a>
@@ -145,7 +136,7 @@ export function ProjectDetail({ project }: { project: Project }) {
                     href={project.website}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex rounded-full bg-[#2ee6c5] px-5 py-3 text-sm font-semibold text-[#04110e] transition hover:bg-[#7ff5df]"
+                    className="btn-signal inline-flex rounded-full px-5 py-3 text-sm font-semibold transition"
                   >
                     Open website
                   </a>
@@ -155,7 +146,7 @@ export function ProjectDetail({ project }: { project: Project }) {
                     href={project.github}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex rounded-full border border-white/15 px-5 py-3 text-sm text-[#f3eee6] hover:border-[#2ee6c5]/50"
+                    className="inline-flex rounded-full border border-line px-5 py-3 text-sm text-ink hover:border-signal"
                   >
                     Open GitHub
                   </a>
@@ -165,16 +156,16 @@ export function ProjectDetail({ project }: { project: Project }) {
           </div>
         </motion.div>
 
-        <div className="mt-16 flex items-center justify-between border-t border-white/8 pt-8 text-sm">
+        <div className="mt-16 flex items-center justify-between border-t border-line pt-8 text-sm">
           {prev ? (
-            <a href={`#project/${prev.id}`} className="text-[#8b93a7] hover:text-[#2ee6c5]">
+            <a href={`#project/${prev.id}`} className="text-mute hover:text-signal">
               ← {prev.name}
             </a>
           ) : (
             <span />
           )}
           {next ? (
-            <a href={`#project/${next.id}`} className="text-[#8b93a7] hover:text-[#2ee6c5]">
+            <a href={`#project/${next.id}`} className="text-mute hover:text-signal">
               {next.name} →
             </a>
           ) : (

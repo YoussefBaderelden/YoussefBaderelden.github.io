@@ -1,6 +1,7 @@
 export const profile = {
-  name: "Youssef Bader El Den",
-  first: "Youssef",
+  name: "Yousef Badr",
+  first: "Yousef",
+  last: "Badr",
   role: "Mid-level Flutter Engineer",
   tagline:
     "Production Flutter — live streaming, sports media, payments. Not a junior profile.",

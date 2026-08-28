@@ -9,6 +9,7 @@ import { Nav } from "./components/Nav";
 import { ProjectDetail } from "./components/ProjectDetail";
 import { Skills } from "./components/Skills";
 import { Work } from "./components/Work";
+import { ThemeProvider } from "./theme";
 import { getProject } from "./data";
 
 function readProjectId() {
@@ -28,6 +29,7 @@ export default function App() {
   const project = projectId ? getProject(projectId) : undefined;
 
   return (
+    <ThemeProvider>
     <div className="relative grid-bg min-h-screen">
       <div className="grain" />
       <div className="scanlines" />
@@ -49,5 +51,6 @@ export default function App() {
       )}
       <Footer />
     </div>
+    </ThemeProvider>
   );
 }
