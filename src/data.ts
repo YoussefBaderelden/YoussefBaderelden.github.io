@@ -194,7 +194,7 @@ export const projects: Project[] = [
     featured: true,
     liveNo: 2,
     liveOn: ["iOS", "Android"],
-    category: "live",
+    category: "tools",
     appStore: "https://apps.apple.com/app/id6755495829",
     playStore: "https://play.google.com/store/apps/details?id=com.tkds.tkdsStreamer",
   },
@@ -376,7 +376,7 @@ export const projects: Project[] = [
     logo: "./apps/scorecue.png",
     accent: "#38bdf8",
     story: "Sideline / booth scoring client so operators can push live scores into the TKDS stack.",
-    category: "tools",
+    category: "sports",
   },
 ];
 
