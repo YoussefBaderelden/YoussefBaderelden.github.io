@@ -377,6 +377,21 @@ export const liveApps = projects
   .filter((p) => typeof p.liveNo === "number")
   .sort((a, b) => (a.liveNo ?? 0) - (b.liveNo ?? 0));
 
+export const categoryLabel: Record<Project["category"], string> = {
+  live: "Live & broadcast",
+  sports: "Sports media",
+  product: "Product",
+  tools: "Ops tools",
+};
+
+export function getProject(id: string) {
+  return projects.find((p) => p.id === id);
+}
+
+export function projectHash(id: string) {
+  return `#project/${id}`;
+}
+
 export const ticker = [
   "Flutter",
   "Dart",

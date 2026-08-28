@@ -14,10 +14,23 @@ function pad(n: number) {
   return String(n).padStart(2, "0");
 }
 
+function openProject(id: string) {
+  window.location.hash = `project/${id}`;
+}
+
 function Card({ project, large }: { project: Project; large?: boolean }) {
   return (
     <article
-      className={`card-3d group relative overflow-hidden rounded-3xl border border-white/8 bg-[#0c0e14] ${
+      role="link"
+      tabIndex={0}
+      onClick={() => openProject(project.id)}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          openProject(project.id);
+        }
+      }}
+      className={`card-3d group relative cursor-pointer overflow-hidden rounded-3xl border border-white/8 bg-[#0c0e14] ${
         large ? "md:col-span-2 md:grid md:grid-cols-[1.05fr_1fr]" : ""
       }`}
     >
@@ -67,6 +80,7 @@ function Card({ project, large }: { project: Project; large?: boolean }) {
               href={project.appStore}
               target="_blank"
               rel="noreferrer"
+              onClick={(e) => e.stopPropagation()}
               className="rounded-full border border-[#2ee6c5]/40 bg-[#2ee6c5]/10 px-2.5 py-0.5 text-[#2ee6c5] hover:bg-[#2ee6c5] hover:text-[#04110e]"
             >
               iOS · App Store
@@ -77,6 +91,7 @@ function Card({ project, large }: { project: Project; large?: boolean }) {
               href={project.playStore}
               target="_blank"
               rel="noreferrer"
+              onClick={(e) => e.stopPropagation()}
               className="rounded-full border border-[#2ee6c5]/40 bg-[#2ee6c5]/10 px-2.5 py-0.5 text-[#2ee6c5] hover:bg-[#2ee6c5] hover:text-[#04110e]"
             >
               Android · Play
@@ -106,13 +121,14 @@ function Card({ project, large }: { project: Project; large?: boolean }) {
             </span>
           ))}
         </div>
-        {(project.appStore || project.playStore || project.github) && (
+        {(project.appStore || project.playStore || project.github) ? (
           <div className="mt-5 flex flex-wrap gap-2">
             {project.appStore && (
               <a
                 href={project.appStore}
                 target="_blank"
                 rel="noreferrer"
+                onClick={(e) => e.stopPropagation()}
                 className="inline-flex items-center rounded-full border border-[#2ee6c5] bg-transparent px-4 py-2 text-xs font-semibold text-[#2ee6c5] transition hover:bg-[#2ee6c5] hover:text-[#04110e]"
               >
                 Published on App Store
@@ -123,6 +139,7 @@ function Card({ project, large }: { project: Project; large?: boolean }) {
                 href={project.playStore}
                 target="_blank"
                 rel="noreferrer"
+                onClick={(e) => e.stopPropagation()}
                 className="inline-flex items-center rounded-full bg-[#2ee6c5] px-4 py-2 text-xs font-semibold text-[#04110e] transition hover:bg-[#7ff5df]"
               >
                 Published on Google Play
@@ -133,11 +150,21 @@ function Card({ project, large }: { project: Project; large?: boolean }) {
                 href={project.github}
                 target="_blank"
                 rel="noreferrer"
+                onClick={(e) => e.stopPropagation()}
                 className="inline-flex items-center rounded-full border border-white/15 px-4 py-2 text-xs text-[#2ee6c5] hover:border-[#2ee6c5]/50"
               >
                 GitHub
               </a>
             )}
+            <span className="inline-flex items-center px-2 py-2 text-xs text-[#8b93a7] group-hover:text-[#2ee6c5]">
+              View details →
+            </span>
+          </div>
+        ) : (
+          <div className="mt-5">
+            <span className="inline-flex items-center text-xs text-[#8b93a7] group-hover:text-[#2ee6c5]">
+              View details →
+            </span>
           </div>
         )}
       </div>
@@ -186,7 +213,8 @@ export function Work() {
         {liveApps.map((p) => (
           <li
             key={p.id}
-            className="flex items-center gap-4 rounded-2xl border border-white/8 bg-[#0c0e14] px-4 py-3"
+            onClick={() => openProject(p.id)}
+            className="flex cursor-pointer items-center gap-4 rounded-2xl border border-white/8 bg-[#0c0e14] px-4 py-3 transition hover:border-[#2ee6c5]/35"
           >
             <span className="font-display text-lg text-[#2ee6c5]">{pad(p.liveNo!)}</span>
             {p.logo && (
@@ -196,12 +224,24 @@ export function Work() {
               <span className="block truncate font-medium text-[#f3eee6]">{p.name}</span>
               <span className="mt-1 flex flex-wrap gap-3 text-xs text-[#2ee6c5]">
                 {p.appStore && (
-                  <a href={p.appStore} target="_blank" rel="noreferrer" className="hover:underline">
+                  <a
+                    href={p.appStore}
+                    target="_blank"
+                    rel="noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    className="hover:underline"
+                  >
                     App Store
                   </a>
                 )}
                 {p.playStore && (
-                  <a href={p.playStore} target="_blank" rel="noreferrer" className="hover:underline">
+                  <a
+                    href={p.playStore}
+                    target="_blank"
+                    rel="noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    className="hover:underline"
+                  >
                     Google Play
                   </a>
                 )}
