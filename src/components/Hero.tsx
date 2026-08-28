@@ -17,7 +17,7 @@ export function Hero() {
             className="mb-5 flex items-center gap-2 text-xs uppercase tracking-[0.28em] text-[#2ee6c5]"
           >
             <span className="live-dot inline-block h-2 w-2 rounded-full bg-[#e30613]" />
-            Mid-level · Flutter · TKDS MENA · Cairo
+            Mid-level · Flutter · TKDS MENA · Cairo, Egypt
           </motion.p>
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
@@ -74,7 +74,7 @@ export function Hero() {
             />
             <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-5">
               <p className="font-display text-lg">{profile.role}</p>
-              <p className="text-sm text-[#8b93a7]">TKDS MENA · Cairo</p>
+              <p className="text-sm text-[#8b93a7]">TKDS MENA · Cairo, Egypt</p>
             </div>
           </div>
         </motion.div>
