@@ -1,10 +1,10 @@
 # Youssef Bader El Den — Portfolio
 
-Personal site for **Youssef Bader El Den**, mid-level Flutter engineer in Cairo.
+**Free live site:** [https://youssefbaderelden.github.io](https://youssefbaderelden.github.io)
 
-**Live:** https://youssefbaderelden.github.io  
-**Source:** https://github.com/YoussefBaderelden/YoussefBaderelden.github.io  
-**GitHub profile:** https://github.com/YoussefBaderelden
+Mid-level Flutter engineer in Cairo, Egypt. This repo is the source. GitHub Pages serves the built site from the `gh-pages` branch — no paid hosting.
+
+**GitHub profile:** [github.com/YoussefBaderelden](https://github.com/YoussefBaderelden)
 
 ## Run locally
 

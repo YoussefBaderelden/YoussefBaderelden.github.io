@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 320" width="1200" height="320" role="img" aria-label="Youssef Bader El Den  Mid-level Flutter Engineer">
+  <rect width="1200" height="320" fill="#050608"/>
+  <circle cx="160" cy="20" r="160" fill="#2ee6c5" opacity="0.14"/>
+  <circle cx="1080" cy="300" r="180" fill="#e30613" opacity="0.12"/>
+  <rect x="56" y="86" width="10" height="10" rx="5" fill="#e30613"/>
+  <text x="78" y="96" fill="#2ee6c5" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="15" letter-spacing="3.2">MID-LEVEL  ·  FLUTTER  ·  TKDS MENA  ·  CAIRO, EGYPT</text>
+  <text x="56" y="168" fill="#f3eee6" font-family="Georgia, Times New Roman, serif" font-size="54" font-weight="700">Youssef Bader El Den</text>
+  <text x="56" y="218" fill="#8b93a7" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="20">10 live apps on iOS &amp; Android  ·  Windows VAR  ·  Web</text>
+  <text x="56" y="262" fill="#8b93a7" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="16">youssefbaderelden.github.io</text>
+</svg>
