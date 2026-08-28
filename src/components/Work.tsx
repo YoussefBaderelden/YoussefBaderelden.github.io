@@ -160,22 +160,29 @@ export function Work() {
 
       <ol className="mb-12 grid gap-3 sm:grid-cols-2">
         {liveApps.map((p) => (
-          <li key={p.id}>
-            <a
-              href={p.appStore || p.playStore || "#work"}
-              target={p.appStore || p.playStore ? "_blank" : undefined}
-              rel="noreferrer"
-              className="flex items-center gap-4 rounded-2xl border border-white/8 bg-[#0c0e14] px-4 py-3 transition hover:border-[#2ee6c5]/35"
-            >
-              <span className="font-display text-lg text-[#2ee6c5]">{pad(p.liveNo!)}</span>
-              {p.logo && (
-                <img src={p.logo} alt="" className="h-10 w-10 rounded-lg object-contain" />
-              )}
-              <span className="min-w-0 flex-1">
-                <span className="block truncate font-medium text-[#f3eee6]">{p.name}</span>
-                <span className="text-xs text-[#8b93a7]">{p.liveOn?.join(" · ")}</span>
+          <li
+            key={p.id}
+            className="flex items-center gap-4 rounded-2xl border border-white/8 bg-[#0c0e14] px-4 py-3"
+          >
+            <span className="font-display text-lg text-[#2ee6c5]">{pad(p.liveNo!)}</span>
+            {p.logo && (
+              <img src={p.logo} alt="" className="h-10 w-10 rounded-lg object-contain" />
+            )}
+            <span className="min-w-0 flex-1">
+              <span className="block truncate font-medium text-[#f3eee6]">{p.name}</span>
+              <span className="mt-1 flex flex-wrap gap-3 text-xs text-[#2ee6c5]">
+                {p.appStore && (
+                  <a href={p.appStore} target="_blank" rel="noreferrer" className="hover:underline">
+                    App Store
+                  </a>
+                )}
+                {p.playStore && (
+                  <a href={p.playStore} target="_blank" rel="noreferrer" className="hover:underline">
+                    Google Play
+                  </a>
+                )}
               </span>
-            </a>
+            </span>
           </li>
         ))}
       </ol>

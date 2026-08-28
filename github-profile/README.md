@@ -22,14 +22,14 @@ Sole mobile developer for a broadcasting / streaming company. Media Core, live a
 | --- | --- | --- |
 | 01 | **Fizz Party** | [App Store](https://apps.apple.com/app/id6755402526) · [Google Play](https://play.google.com/store/apps/details?id=com.tkds.FizzAPP) |
 | 02 | **TKDS Streamer** | [App Store](https://apps.apple.com/app/id6755495829) · [Google Play](https://play.google.com/store/apps/details?id=com.tkds.tkdsStreamer) |
-| 03 | **National Golf Network** | [App Store](https://apps.apple.com/app/id6764359434) · [Google Play](https://play.google.com/store/apps/details?id=com.tkds.nationalgolfnetwork) |
-| 04 | **TKDS Sports** | [App Store](https://apps.apple.com/app/id6778073209) · [Google Play](https://play.google.com/store/apps/details?id=com.tkds.tkdssports) |
+| 03 | **National Golf Network - NGN** | [App Store](https://apps.apple.com/app/id6764359434) · [Google Play](https://play.google.com/store/apps/details?id=com.tkds.nationalgolfnetwork) |
+| 04 | **TKDS SPORTS** | [App Store](https://apps.apple.com/app/id6778073209) · [Google Play](https://play.google.com/store/apps/details?id=com.tkds.tkdssports) |
 | 05 | **BikMedia** | [App Store](https://apps.apple.com/app/id6756263985) · [Google Play](https://play.google.com/store/apps/details?id=com.bikmedianewapp.vr) |
 | 06 | **TKDS Radio** | [Google Play](https://play.google.com/store/apps/details?id=com.tkds.RadioAPP) · iOS in progress |
 | 07 | **Maadi Sports** | [Google Play](https://play.google.com/store/apps/details?id=com.tkds.maadisports) |
-| 08 | **Antlersn (ASN TV)** | [Google Play](https://play.google.com/store/apps/details?id=com.tkds.antlersn) |
-| 09 | **Sports Flix** | [Google Play](https://play.google.com/store/apps/details?id=com.tkds.sportsfixlive) |
-| 10 | **Southwest Ohio** | [Google Play](https://play.google.com/store/apps/details?id=com.tkds.southwestohio) |
+| 08 | **ASN TV** | [Google Play](https://play.google.com/store/apps/details?id=com.tkds.antlersn) |
+| 09 | **Sports Flix -SF** | [Google Play](https://play.google.com/store/apps/details?id=com.tkds.sportsfixlive) |
+| 10 | **Southwest Ohio - SWOH** | [Google Play](https://play.google.com/store/apps/details?id=com.tkds.southwestohio) |
 
 ---
 

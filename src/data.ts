@@ -197,7 +197,7 @@ export const projects: Project[] = [
   },
   {
     id: "ngn",
-    name: "National Golf Network",
+    name: "National Golf Network - NGN",
     blurb: "Live and on-demand golf — high school, college, amateur. Live on both stores.",
     story:
       "Sports streaming app for NGN: live TV/radio, tournament coverage, analysis, interviews, and highlights. Subscription and payment flows for premium access. Built on TKDS Media Core. Live on the App Store and Google Play.",
@@ -261,7 +261,7 @@ export const projects: Project[] = [
   },
   {
     id: "tkds-core",
-    name: "TKDS Sports",
+    name: "TKDS SPORTS",
     blurb: "White-label sports media engine — live as TKDS Sports on iOS and Android.",
     story:
       "Shared Flutter core: live video, radio, HTML content, QR, camera, push, custom Android video player. Ships live as TKDS Sports, and powers NGN, Sports Flix, Maadi Sports, Antlersn, and Southwest Ohio.",
@@ -290,8 +290,8 @@ export const projects: Project[] = [
   },
   {
     id: "sportsflix",
-    name: "Sports Flix",
-    blurb: "Sports streaming product on the TKDS media stack.",
+    name: "Sports Flix -SF",
+    blurb: "Sports streaming on Media Core — live on Google Play.",
     tags: ["Live video", "VOD", "Riverpod"],
     platforms: ["iOS", "Android"],
     logo: "./apps/sportsflix.png",
@@ -320,8 +320,8 @@ export const projects: Project[] = [
   },
   {
     id: "antlersn",
-    name: "Antlersn",
-    blurb: "Sports media brand with TV launcher support.",
+    name: "ASN TV",
+    blurb: "Antler Sports Network — live games and VOD on Google Play.",
     tags: ["Sports", "TV", "Video"],
     platforms: ["iOS", "Android", "TV"],
     logo: "./apps/antlersn.png",
@@ -335,8 +335,8 @@ export const projects: Project[] = [
   },
   {
     id: "swo",
-    name: "Southwest Ohio",
-    blurb: "Regional sports network app for Southwest Ohio.",
+    name: "Southwest Ohio - SWOH",
+    blurb: "Regional sports network — live on Google Play.",
     tags: ["Regional sports", "Live", "VOD"],
     platforms: ["iOS", "Android"],
     logo: "./apps/southwest-ohio.png",
