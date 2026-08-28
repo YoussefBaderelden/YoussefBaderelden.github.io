@@ -53,19 +53,33 @@ function Card({ project, large }: { project: Project; large?: boolean }) {
       </div>
       <div className="flex flex-col p-6">
         <div className="flex flex-wrap gap-2 text-[10px] uppercase tracking-wider text-[#8b93a7]">
-          {project.liveOn?.map((p) => (
-            <span
-              key={p}
-              className="rounded-full border border-[#2ee6c5]/30 px-2 py-0.5 text-[#2ee6c5]"
+          {project.appStore && (
+            <a
+              href={project.appStore}
+              target="_blank"
+              rel="noreferrer"
+              className="rounded-full border border-[#2ee6c5]/40 bg-[#2ee6c5]/10 px-2.5 py-0.5 text-[#2ee6c5] hover:bg-[#2ee6c5] hover:text-[#04110e]"
             >
-              {p} live
-            </span>
-          ))}
-          {project.platforms.map((p) => (
-            <span key={p} className="rounded-full border border-white/10 px-2 py-0.5">
-              {p}
-            </span>
-          ))}
+              iOS · App Store
+            </a>
+          )}
+          {project.playStore && (
+            <a
+              href={project.playStore}
+              target="_blank"
+              rel="noreferrer"
+              className="rounded-full border border-[#2ee6c5]/40 bg-[#2ee6c5]/10 px-2.5 py-0.5 text-[#2ee6c5] hover:bg-[#2ee6c5] hover:text-[#04110e]"
+            >
+              Android · Play
+            </a>
+          )}
+          {!project.appStore &&
+            !project.playStore &&
+            project.platforms.map((p) => (
+              <span key={p} className="rounded-full border border-white/10 px-2 py-0.5">
+                {p}
+              </span>
+            ))}
         </div>
         <h3 className="mt-3 font-display text-2xl">
           {project.liveNo ? `${pad(project.liveNo)}. ${project.name}` : project.name}
