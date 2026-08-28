@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
-import { categoryLabel, projects, type Project } from "../data";
+import { categoryLabel, hasProjectLinks, projects, publishedBadge, type Project } from "../data";
 
 function pad(n: number) {
   return String(n).padStart(2, "0");
@@ -15,14 +15,7 @@ export function ProjectDetail({ project }: { project: Project }) {
     window.scrollTo(0, 0);
   }, [project.id]);
 
-  const published =
-    project.appStore && project.playStore
-      ? "Published on iOS & Android"
-      : project.appStore
-        ? "Published on iOS"
-        : project.playStore
-          ? "Published on Android"
-          : project.status ?? "In production";
+  const published = publishedBadge(project) ?? "In production";
 
   return (
     <section className="relative min-h-screen overflow-hidden px-5 pb-24 pt-28 md:px-8">
@@ -115,7 +108,7 @@ export function ProjectDetail({ project }: { project: Project }) {
               </div>
             </div>
 
-            {(project.appStore || project.playStore || project.github) && (
+            {hasProjectLinks(project) && (
               <div className="mt-10 flex flex-wrap gap-3">
                 {project.appStore && (
                   <a
@@ -135,6 +128,26 @@ export function ProjectDetail({ project }: { project: Project }) {
                     className="inline-flex rounded-full bg-[#2ee6c5] px-5 py-3 text-sm font-semibold text-[#04110e] transition hover:bg-[#7ff5df]"
                   >
                     Open Google Play
+                  </a>
+                )}
+                {project.microsoftStore && (
+                  <a
+                    href={project.microsoftStore}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex rounded-full bg-[#2ee6c5] px-5 py-3 text-sm font-semibold text-[#04110e] transition hover:bg-[#7ff5df]"
+                  >
+                    Open Microsoft Store
+                  </a>
+                )}
+                {project.website && (
+                  <a
+                    href={project.website}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex rounded-full bg-[#2ee6c5] px-5 py-3 text-sm font-semibold text-[#04110e] transition hover:bg-[#7ff5df]"
+                  >
+                    Open website
                   </a>
                 )}
                 {project.github && (

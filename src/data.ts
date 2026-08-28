@@ -155,6 +155,8 @@ export type Project = {
   github?: string;
   appStore?: string;
   playStore?: string;
+  microsoftStore?: string;
+  website?: string;
   liveNo?: number;
   liveOn?: ("Android" | "iOS")[];
   category: "live" | "sports" | "product" | "tools";
@@ -280,14 +282,16 @@ export const projects: Project[] = [
   {
     id: "tkds-var",
     name: "TKDS VAR",
-    blurb: "Video assistant referee toolkit — Windows Store, Android, and iOS.",
+    blurb: "Professional Windows video review for live sports — live on the Microsoft Store.",
     story:
-      "VAR review client with FFmpeg and media_kit. Ships on Windows via Microsoft Store (MSIX), plus Android and iOS. Frame-accurate playback for live sports operators.",
-    tags: ["FFmpeg", "media_kit", "MSIX", "Windows"],
+      "TKDS LIVE VAR is a professional Windows video-review application for sports organizations using the MediaCore2 platform. Review live MediaCore2 VAR camera feeds and NDI sources, navigate the timeline precisely, create timestamped tags, compare multiple cameras, and return instantly to live action. Published on the Microsoft Store.",
+    tags: ["FFmpeg", "media_kit", "MSIX", "NDI", "Windows"],
     platforms: ["Windows", "Android", "iOS"],
     logo: "./apps/tkds-var.png",
     accent: "#f5c542",
     category: "tools",
+    status: "Published · Microsoft Store",
+    microsoftStore: "https://apps.microsoft.com/detail/9nhp3hphp9t3",
   },
   {
     id: "sportsflix",
@@ -352,13 +356,16 @@ export const projects: Project[] = [
   {
     id: "playtoowin",
     name: "PlayTooWin",
-    blurb: "Live bingo — web first.",
+    blurb: "Live bingo on the web — play at playtoowin.com.",
     tags: ["Bingo", "Live", "Riverpod"],
     platforms: ["Web"],
     logo: "./apps/playtoowin.png",
     accent: "#22c55e",
-    story: "PlayTooWin live bingo experience, targeting web as the primary surface.",
+    story:
+      "PlayTooWin is a live bingo experience built as a web-first product. Players sign in, buy cards, and follow the live stream at playtoowin.com.",
     category: "product",
+    status: "Live on web",
+    website: "https://playtoowin.com/",
   },
   {
     id: "scorecue",
@@ -392,6 +399,26 @@ export function projectHash(id: string) {
   return `#project/${id}`;
 }
 
+export function hasProjectLinks(project: Project) {
+  return Boolean(
+    project.appStore ||
+      project.playStore ||
+      project.microsoftStore ||
+      project.website ||
+      project.github,
+  );
+}
+
+export function publishedBadge(project: Project) {
+  const parts: string[] = [];
+  if (project.appStore) parts.push("iOS");
+  if (project.playStore) parts.push("Android");
+  if (project.microsoftStore) parts.push("Windows");
+  if (project.website) parts.push("Web");
+  if (parts.length) return `Published · ${parts.join(" & ")}`;
+  return project.status ?? null;
+}
+
 export const ticker = [
   "Flutter",
   "Dart",
@@ -406,6 +433,7 @@ export const ticker = [
   "Payments",
   "App Store",
   "Google Play",
+  "Microsoft Store",
   "iOS",
   "Android",
   "Windows",

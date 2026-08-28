@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { liveApps, projects, type Project } from "../data";
+import { hasProjectLinks, liveApps, projects, publishedBadge, type Project } from "../data";
 
 const filters = [
   { id: "all", label: "All" },
@@ -19,6 +19,7 @@ function openProject(id: string) {
 }
 
 function Card({ project, large }: { project: Project; large?: boolean }) {
+  const badge = publishedBadge(project);
   return (
     <article
       role="link"
@@ -58,18 +59,9 @@ function Card({ project, large }: { project: Project; large?: boolean }) {
             {pad(project.liveNo)} · Live
           </span>
         )}
-        {(project.appStore || project.playStore) && (
+        {badge && (
           <span className="absolute right-4 top-4 rounded-full bg-[#2ee6c5] px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-[#04110e]">
-            {project.appStore && project.playStore
-              ? "Published · iOS & Android"
-              : project.appStore
-                ? "Published · iOS"
-                : "Published · Android"}
-          </span>
-        )}
-        {project.status && !project.liveNo && !project.appStore && !project.playStore && (
-          <span className="absolute right-4 top-4 rounded-full bg-[#2ee6c5] px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-[#04110e]">
-            {project.status}
+            {badge}
           </span>
         )}
       </div>
@@ -97,8 +89,29 @@ function Card({ project, large }: { project: Project; large?: boolean }) {
               Android · Play
             </a>
           )}
-          {!project.appStore &&
-            !project.playStore &&
+          {project.microsoftStore && (
+            <a
+              href={project.microsoftStore}
+              target="_blank"
+              rel="noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              className="rounded-full border border-[#2ee6c5]/40 bg-[#2ee6c5]/10 px-2.5 py-0.5 text-[#2ee6c5] hover:bg-[#2ee6c5] hover:text-[#04110e]"
+            >
+              Windows · Microsoft Store
+            </a>
+          )}
+          {project.website && (
+            <a
+              href={project.website}
+              target="_blank"
+              rel="noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              className="rounded-full border border-[#2ee6c5]/40 bg-[#2ee6c5]/10 px-2.5 py-0.5 text-[#2ee6c5] hover:bg-[#2ee6c5] hover:text-[#04110e]"
+            >
+              Web · Site
+            </a>
+          )}
+          {!hasProjectLinks(project) &&
             project.platforms.map((p) => (
               <span key={p} className="rounded-full border border-white/10 px-2 py-0.5">
                 {p}
@@ -121,7 +134,7 @@ function Card({ project, large }: { project: Project; large?: boolean }) {
             </span>
           ))}
         </div>
-        {(project.appStore || project.playStore || project.github) ? (
+        {hasProjectLinks(project) ? (
           <div className="mt-5 flex flex-wrap gap-2">
             {project.appStore && (
               <a
@@ -143,6 +156,28 @@ function Card({ project, large }: { project: Project; large?: boolean }) {
                 className="inline-flex items-center rounded-full bg-[#2ee6c5] px-4 py-2 text-xs font-semibold text-[#04110e] transition hover:bg-[#7ff5df]"
               >
                 Published on Google Play
+              </a>
+            )}
+            {project.microsoftStore && (
+              <a
+                href={project.microsoftStore}
+                target="_blank"
+                rel="noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="inline-flex items-center rounded-full bg-[#2ee6c5] px-4 py-2 text-xs font-semibold text-[#04110e] transition hover:bg-[#7ff5df]"
+              >
+                Published on Microsoft Store
+              </a>
+            )}
+            {project.website && (
+              <a
+                href={project.website}
+                target="_blank"
+                rel="noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="inline-flex items-center rounded-full bg-[#2ee6c5] px-4 py-2 text-xs font-semibold text-[#04110e] transition hover:bg-[#7ff5df]"
+              >
+                Open website
               </a>
             )}
             {project.github && (
