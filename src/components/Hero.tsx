@@ -92,6 +92,11 @@ export function Hero() {
           >
             <p className="font-display text-3xl text-[#2ee6c5]">{s.value}</p>
             <p className="mt-1 text-xs uppercase tracking-widest text-[#8b93a7]">{s.label}</p>
+            {"detail" in s && s.detail && (
+              <p className="mt-2 text-[11px] leading-relaxed tracking-wide text-[#f3eee6]">
+                {s.detail}
+              </p>
+            )}
           </motion.div>
         ))}
       </div>

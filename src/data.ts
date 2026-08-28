@@ -23,7 +23,7 @@ export const profile = {
 export const stats = [
   { value: "10", label: "Live on iOS / Android" },
   { value: "20+", label: "Apps built" },
-  { value: "4", label: "Platforms" },
+  { value: "4", label: "Platforms", detail: "iOS · Android · Windows · Web" },
   { value: "Nov ’25", label: "TKDS MENA" },
 ];
 
