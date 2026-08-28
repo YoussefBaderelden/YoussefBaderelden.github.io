@@ -113,7 +113,7 @@ function Card({ project, large }: { project: Project; large?: boolean }) {
                 href={project.appStore}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center rounded-full bg-[#f3eee6] px-4 py-2 text-xs font-semibold text-[#04110e] transition hover:bg-[#2ee6c5]"
+                className="inline-flex items-center rounded-full border border-[#2ee6c5] bg-transparent px-4 py-2 text-xs font-semibold text-[#2ee6c5] transition hover:bg-[#2ee6c5] hover:text-[#04110e]"
               >
                 Published on App Store
               </a>

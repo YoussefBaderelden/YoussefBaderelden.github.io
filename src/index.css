@@ -119,10 +119,6 @@ body {
   box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(46, 230, 197, 0.08);
 }
 
-a {
-  color: inherit;
-}
-
 button {
   font-family: inherit;
 }
