@@ -2,6 +2,10 @@
 
 Personal site for **Youssef Bader El Den**, Flutter engineer in Cairo.
 
+**Live:** https://youssefbaderelden.github.io  
+**Source:** https://github.com/YoussefBaderelden/YoussefBaderelden.github.io  
+**GitHub profile:** https://github.com/YoussefBaderelden
+
 ## Run locally
 
 ```bash
@@ -17,7 +21,3 @@ Open the URL Vite prints (usually `http://localhost:5173`).
 npm run build
 npm run preview
 ```
-
-## GitHub profile README
-
-Copy `github-profile/README.md` into a repository named **YoussefBaderelden** (same as your username) so it appears on https://github.com/YoussefBaderelden
