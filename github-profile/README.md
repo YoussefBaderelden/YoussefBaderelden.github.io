@@ -40,9 +40,7 @@ Sole mobile developer for a broadcasting / streaming company. Media Core, live a
 | **BikMedia** | Agora, Nosmai filters, Game Live fetcher, WebRTC pipeline, live performance |
 | **Pasty** | Design-your-cake + sweets commerce · launching soon |
 | **TKDS VAR** | Windows Store + Android + iOS · FFmpeg |
-| **Media Core family** | Sports Flix, Maadi Sports, Antlersn, Southwest Ohio |
-
-Public code: [news](https://github.com/YoussefBaderelden/news) · [evently](https://github.com/YoussefBaderelden/evently) · [islamic_app](https://github.com/YoussefBaderelden/islamic_app) · [fitness_app](https://github.com/YoussefBaderelden/fitness_app)
+| **Score Cue** | Live sports scoring operator app |
 
 ---
 
