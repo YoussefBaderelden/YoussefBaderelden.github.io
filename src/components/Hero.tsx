@@ -67,7 +67,7 @@ export function Hero() {
             <img
               src={profile.photo}
               alt={profile.name}
-              className="aspect-[3/4] w-full object-cover object-[center_18%]"
+              className="aspect-[3/4] w-full object-cover object-[center_12%]"
             />
             <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 to-transparent p-5">
               <p className="font-display text-lg text-white">{profile.role}</p>
