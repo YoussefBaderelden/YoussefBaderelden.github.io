@@ -45,7 +45,16 @@ function Card({ project, large }: { project: Project; large?: boolean }) {
             {pad(project.liveNo)} · Live
           </span>
         )}
-        {project.status && !project.liveNo && (
+        {(project.appStore || project.playStore) && (
+          <span className="absolute right-4 top-4 rounded-full bg-[#2ee6c5] px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-[#04110e]">
+            {project.appStore && project.playStore
+              ? "Published · iOS & Android"
+              : project.appStore
+                ? "Published · iOS"
+                : "Published · Android"}
+          </span>
+        )}
+        {project.status && !project.liveNo && !project.appStore && !project.playStore && (
           <span className="absolute right-4 top-4 rounded-full bg-[#2ee6c5] px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-[#04110e]">
             {project.status}
           </span>
@@ -98,20 +107,35 @@ function Card({ project, large }: { project: Project; large?: boolean }) {
           ))}
         </div>
         {(project.appStore || project.playStore || project.github) && (
-          <div className="mt-5 flex flex-wrap gap-4 text-sm text-[#2ee6c5]">
+          <div className="mt-5 flex flex-wrap gap-2">
             {project.appStore && (
-              <a href={project.appStore} target="_blank" rel="noreferrer" className="hover:underline">
-                App Store →
+              <a
+                href={project.appStore}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center rounded-full bg-[#f3eee6] px-4 py-2 text-xs font-semibold text-[#04110e] transition hover:bg-[#2ee6c5]"
+              >
+                Published on App Store
               </a>
             )}
             {project.playStore && (
-              <a href={project.playStore} target="_blank" rel="noreferrer" className="hover:underline">
-                Google Play →
+              <a
+                href={project.playStore}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center rounded-full bg-[#2ee6c5] px-4 py-2 text-xs font-semibold text-[#04110e] transition hover:bg-[#7ff5df]"
+              >
+                Published on Google Play
               </a>
             )}
             {project.github && (
-              <a href={project.github} target="_blank" rel="noreferrer" className="hover:underline">
-                GitHub →
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center rounded-full border border-white/15 px-4 py-2 text-xs text-[#2ee6c5] hover:border-[#2ee6c5]/50"
+              >
+                GitHub
               </a>
             )}
           </div>

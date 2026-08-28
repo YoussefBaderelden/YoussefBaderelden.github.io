@@ -175,6 +175,7 @@ export const projects: Project[] = [
     liveNo: 1,
     liveOn: ["iOS", "Android"],
     category: "live",
+    status: "Published · iOS & Android",
     appStore: "https://apps.apple.com/app/id6755402526",
     playStore: "https://play.google.com/store/apps/details?id=com.tkds.FizzAPP",
   },
