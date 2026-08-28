@@ -35,9 +35,8 @@ export function Hero() {
             transition={{ delay: 0.25 }}
             className="mt-6 max-w-xl text-lg text-[#8b93a7] sm:text-xl"
           >
-            {profile.role} at TKDS MENA. Four apps live on the App Store and Google Play.
-            I also build Agora rooms, WebRTC, NDI, payments, and product apps the CV never
-            fully listed.
+            {profile.role} at TKDS MENA. Ten apps live on Android or iOS — numbered in the
+            work section. Agora, WebRTC, NDI, payments, and product apps the CV never fully listed.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 16 }}

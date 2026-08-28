@@ -21,7 +21,7 @@ export const profile = {
 };
 
 export const stats = [
-  { value: "4", label: "Live on stores" },
+  { value: "10", label: "Live on iOS / Android" },
   { value: "20+", label: "Apps built" },
   { value: "4", label: "Platforms" },
   { value: "Nov ’25", label: "TKDS MENA" },
@@ -93,7 +93,7 @@ export const experience = [
     period: "Nov 2025 – Present",
     place: "Remote · broadcasting & streaming",
     points: [
-      "Sole mobile developer. Shipped four production apps on iOS and Android, wired into the TKDS Media Core platform.",
+      "Sole mobile developer. Shipped 10 production apps live on Android and/or iOS, wired into the TKDS Media Core platform.",
       "Fizz Party — social live streaming with Fizzer profiles, live rooms, search, favourites, and dark theme. Live on the App Store and Google Play.",
       "TKDS Streamer — go live from phone or iPad. RTMP plus WebRTC and NDI local broadcast into OBS / vMix, camera switch, mic mute, immersive controls.",
       "NGN (National Golf Network) — live and on-demand golf: high school, collegiate, and amateur events, with subscription and payment flows. Live on both stores.",
@@ -155,6 +155,8 @@ export type Project = {
   github?: string;
   appStore?: string;
   playStore?: string;
+  liveNo?: number;
+  liveOn?: ("Android" | "iOS")[];
   category: "live" | "sports" | "product" | "tools";
 };
 
@@ -170,6 +172,8 @@ export const projects: Project[] = [
     logo: "./apps/fizz-party.png",
     accent: "#ff4f8b",
     featured: true,
+    liveNo: 1,
+    liveOn: ["iOS", "Android"],
     category: "live",
     appStore: "https://apps.apple.com/app/id6755402526",
     playStore: "https://play.google.com/store/apps/details?id=com.tkds.FizzAPP",
@@ -185,6 +189,8 @@ export const projects: Project[] = [
     logo: "./apps/tkds-streamer.png",
     accent: "#d32d33",
     featured: true,
+    liveNo: 2,
+    liveOn: ["iOS", "Android"],
     category: "live",
     appStore: "https://apps.apple.com/app/id6755495829",
     playStore: "https://play.google.com/store/apps/details?id=com.tkds.tkdsStreamer",
@@ -200,6 +206,8 @@ export const projects: Project[] = [
     logo: "./apps/ngn.png",
     accent: "#1b8a5a",
     featured: true,
+    liveNo: 3,
+    liveOn: ["iOS", "Android"],
     category: "sports",
     appStore: "https://apps.apple.com/app/id6764359434",
     playStore: "https://play.google.com/store/apps/details?id=com.tkds.nationalgolfnetwork",
@@ -215,7 +223,11 @@ export const projects: Project[] = [
     logo: "./apps/bikmedia.png",
     accent: "#7c5cff",
     featured: true,
+    liveNo: 5,
+    liveOn: ["iOS", "Android"],
     category: "live",
+    appStore: "https://apps.apple.com/app/id6756263985",
+    playStore: "https://play.google.com/store/apps/details?id=com.bikmedianewapp.vr",
   },
   {
     id: "pasty",
@@ -241,21 +253,28 @@ export const projects: Project[] = [
     platforms: ["Android", "iOS soon"],
     logo: "./apps/tkds-radio.png",
     accent: "#fb7185",
+    liveNo: 6,
+    liveOn: ["Android"],
     category: "live",
     playStore: "https://play.google.com/store/apps/details?id=com.tkds.RadioAPP",
-    status: "iOS in progress",
+    status: "Live · Android · iOS in progress",
   },
   {
     id: "tkds-core",
-    name: "TKDS Media Core",
-    blurb: "White-label sports media engine behind the TKDS app family.",
+    name: "TKDS Sports",
+    blurb: "White-label sports media engine — live as TKDS Sports on iOS and Android.",
     story:
-      "Shared Flutter core: live video, radio, HTML content, QR, camera, push, custom Android video player. Same engine, different brands — TKDS Sports, NGN, Sports Flix, Maadi Sports, Antlersn, Southwest Ohio.",
+      "Shared Flutter core: live video, radio, HTML content, QR, camera, push, custom Android video player. Ships live as TKDS Sports, and powers NGN, Sports Flix, Maadi Sports, Antlersn, and Southwest Ohio.",
     tags: ["Riverpod", "GoRouter", "Video", "FCM", "White-label"],
     platforms: ["iOS", "Android", "TV"],
     logo: "./apps/tkds-media-core.png",
     accent: "#e30613",
+    liveNo: 4,
+    liveOn: ["iOS", "Android"],
     category: "sports",
+    appStore: "https://apps.apple.com/app/id6778073209",
+    playStore: "https://play.google.com/store/apps/details?id=com.tkds.tkdssports",
+    status: "Live · iOS & Android",
   },
   {
     id: "tkds-var",
@@ -277,8 +296,12 @@ export const projects: Project[] = [
     platforms: ["iOS", "Android"],
     logo: "./apps/sportsflix.png",
     accent: "#ff6b1a",
-    story: "Sports Flix live and on-demand client — same player, auth, and push stack as the rest of Media Core.",
+    story: "Sports Flix live and on-demand client — same player, auth, and push stack as the rest of Media Core. Live on Google Play.",
+    liveNo: 9,
+    liveOn: ["Android"],
     category: "sports",
+    playStore: "https://play.google.com/store/apps/details?id=com.tkds.sportsfixlive",
+    status: "Live · Android",
   },
   {
     id: "maadi",
@@ -288,8 +311,12 @@ export const projects: Project[] = [
     platforms: ["iOS", "Android"],
     logo: "./apps/maadi-sports.png",
     accent: "#013f24",
-    story: "Maadi Sports branded app for matches, highlights, and club audio/video.",
+    story: "Maadi Sports branded app for matches, highlights, and club audio/video. Live on Google Play.",
+    liveNo: 7,
+    liveOn: ["Android"],
     category: "sports",
+    playStore: "https://play.google.com/store/apps/details?id=com.tkds.maadisports",
+    status: "Live · Android",
   },
   {
     id: "antlersn",
@@ -299,8 +326,12 @@ export const projects: Project[] = [
     platforms: ["iOS", "Android", "TV"],
     logo: "./apps/antlersn.png",
     accent: "#c9a227",
-    story: "Antlersn sports network client, including Android TV launcher assets on Media Core.",
+    story: "Antlersn sports network — live on Google Play as ASN TV, including Android TV launcher assets on Media Core.",
+    liveNo: 8,
+    liveOn: ["Android"],
     category: "sports",
+    playStore: "https://play.google.com/store/apps/details?id=com.tkds.antlersn",
+    status: "Live · Android",
   },
   {
     id: "swo",
@@ -310,8 +341,12 @@ export const projects: Project[] = [
     platforms: ["iOS", "Android"],
     logo: "./apps/southwest-ohio.png",
     accent: "#3d6bb3",
-    story: "Southwest Ohio sports media app on the same production player and content pipeline.",
+    story: "Southwest Ohio sports media app on the same production player and content pipeline. Live on Google Play.",
+    liveNo: 10,
+    liveOn: ["Android"],
     category: "sports",
+    playStore: "https://play.google.com/store/apps/details?id=com.tkds.southwestohio",
+    status: "Live · Android",
   },
   {
     id: "playtoowin",
@@ -416,6 +451,10 @@ export const projects: Project[] = [
     category: "product",
   },
 ];
+
+export const liveApps = projects
+  .filter((p) => typeof p.liveNo === "number")
+  .sort((a, b) => (a.liveNo ?? 0) - (b.liveNo ?? 0));
 
 export const ticker = [
   "Flutter",

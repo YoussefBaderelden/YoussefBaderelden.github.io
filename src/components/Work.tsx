@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { projects, type Project } from "../data";
+import { liveApps, projects, type Project } from "../data";
 
 const filters = [
   { id: "all", label: "All" },
@@ -9,6 +9,10 @@ const filters = [
   { id: "product", label: "Products" },
   { id: "tools", label: "Ops tools" },
 ] as const;
+
+function pad(n: number) {
+  return String(n).padStart(2, "0");
+}
 
 function Card({ project, large }: { project: Project; large?: boolean }) {
   return (
@@ -36,7 +40,12 @@ function Card({ project, large }: { project: Project; large?: boolean }) {
             {project.name[0]}
           </span>
         )}
-        {project.status && (
+        {project.liveNo && (
+          <span className="absolute left-4 top-4 rounded-full bg-[#e30613] px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-white">
+            {pad(project.liveNo)} · Live
+          </span>
+        )}
+        {project.status && !project.liveNo && (
           <span className="absolute right-4 top-4 rounded-full bg-[#2ee6c5] px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-[#04110e]">
             {project.status}
           </span>
@@ -44,13 +53,23 @@ function Card({ project, large }: { project: Project; large?: boolean }) {
       </div>
       <div className="flex flex-col p-6">
         <div className="flex flex-wrap gap-2 text-[10px] uppercase tracking-wider text-[#8b93a7]">
+          {project.liveOn?.map((p) => (
+            <span
+              key={p}
+              className="rounded-full border border-[#2ee6c5]/30 px-2 py-0.5 text-[#2ee6c5]"
+            >
+              {p} live
+            </span>
+          ))}
           {project.platforms.map((p) => (
             <span key={p} className="rounded-full border border-white/10 px-2 py-0.5">
               {p}
             </span>
           ))}
         </div>
-        <h3 className="mt-3 font-display text-2xl">{project.name}</h3>
+        <h3 className="mt-3 font-display text-2xl">
+          {project.liveNo ? `${pad(project.liveNo)}. ${project.name}` : project.name}
+        </h3>
         <p className="mt-2 text-sm leading-relaxed text-[#8b93a7]">
           {large ? project.story : project.blurb}
         </p>
@@ -104,7 +123,9 @@ export function Work() {
       <div className="mb-10 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
         <div>
           <p className="text-xs uppercase tracking-[0.28em] text-[#2ee6c5]">Selected work</p>
-          <h2 className="mt-3 font-display text-4xl sm:text-5xl">Apps I actually built.</h2>
+          <h2 className="mt-3 font-display text-4xl sm:text-5xl">
+            {liveApps.length} live on Android or iOS.
+          </h2>
         </div>
         <div className="flex flex-wrap gap-2">
           {filters.map((f) => (
@@ -122,6 +143,28 @@ export function Work() {
           ))}
         </div>
       </div>
+
+      <ol className="mb-12 grid gap-3 sm:grid-cols-2">
+        {liveApps.map((p) => (
+          <li key={p.id}>
+            <a
+              href={p.appStore || p.playStore || "#work"}
+              target={p.appStore || p.playStore ? "_blank" : undefined}
+              rel="noreferrer"
+              className="flex items-center gap-4 rounded-2xl border border-white/8 bg-[#0c0e14] px-4 py-3 transition hover:border-[#2ee6c5]/35"
+            >
+              <span className="font-display text-lg text-[#2ee6c5]">{pad(p.liveNo!)}</span>
+              {p.logo && (
+                <img src={p.logo} alt="" className="h-10 w-10 rounded-lg object-contain" />
+              )}
+              <span className="min-w-0 flex-1">
+                <span className="block truncate font-medium text-[#f3eee6]">{p.name}</span>
+                <span className="text-xs text-[#8b93a7]">{p.liveOn?.join(" · ")}</span>
+              </span>
+            </a>
+          </li>
+        ))}
+      </ol>
 
       <AnimatePresence mode="wait">
         <motion.div

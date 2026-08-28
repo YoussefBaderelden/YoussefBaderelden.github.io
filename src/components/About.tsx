@@ -25,8 +25,9 @@ export function About() {
           <p>
             I’m {profile.name}, based in {profile.city}. {profile.year} in {profile.major} at{" "}
             {profile.university}. At <span className="text-[#f3eee6]">TKDS MENA</span> I own the
-            mobile surface for a broadcasting company — Fizz Party, TKDS Streamer, NGN, TKDS Radio —
-            then the rest of the media family, VAR, and scoring tools.
+            mobile surface for a broadcasting company. Ten apps are live on Android or iOS —
+            Fizz Party, TKDS Streamer, NGN, TKDS Sports, BikMedia, TKDS Radio, Maadi Sports,
+            Antlersn (ASN TV), Sports Flix, and Southwest Ohio.
           </p>
           <p>
             Outside the CV line-items: BikMedia (Agora, filters, Game Live fetcher), Pasty (design
