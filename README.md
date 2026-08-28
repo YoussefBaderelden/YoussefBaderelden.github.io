@@ -1,6 +1,6 @@
 # Youssef Bader El Den — Portfolio
 
-Personal site for **Youssef Bader El Den**, Flutter engineer in Cairo.
+Personal site for **Youssef Bader El Den**, mid-level Flutter engineer in Cairo.
 
 **Live:** https://youssefbaderelden.github.io  
 **Source:** https://github.com/YoussefBaderelden/YoussefBaderelden.github.io  

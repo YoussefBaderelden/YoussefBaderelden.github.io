@@ -7,10 +7,10 @@ export function Skills() {
     <section id="skills" className="border-y border-white/8 bg-[#08090d] py-24">
       <div className="mx-auto max-w-6xl px-5 md:px-8">
         <p className="text-xs uppercase tracking-[0.28em] text-[#2ee6c5]">Stack</p>
-        <h2 className="mt-3 font-display text-4xl sm:text-5xl">Skills — CV plus the rest.</h2>
+        <h2 className="mt-3 font-display text-4xl sm:text-5xl">Production stack.</h2>
         <p className="mt-4 max-w-2xl text-[#8b93a7]">
-          The résumé listed Flutter, Firebase, and BLoC. The work also includes Agora, WebRTC, NDI,
-          FFmpeg, payments, Windows, and store releases.
+          Mid-level range: Flutter at store scale, plus Agora, WebRTC, NDI, FFmpeg, payments, and
+          Windows — not a beginner toolkit.
         </p>
         <div className="mt-12 grid gap-6 md:grid-cols-2">
           {groups.map(([title, items], i) => (

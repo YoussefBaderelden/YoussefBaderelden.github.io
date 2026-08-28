@@ -12,7 +12,7 @@ export function About() {
         >
           <p className="text-xs uppercase tracking-[0.28em] text-[#2ee6c5]">About</p>
           <h2 className="mt-3 font-display text-4xl leading-tight sm:text-5xl">
-            Shipped on stores. Built for live.
+            Mid-level. Shipped on stores. Built for live.
           </h2>
         </motion.div>
         <motion.div
@@ -23,17 +23,17 @@ export function About() {
         >
           <p>{profile.summary}</p>
           <p>
-            I’m {profile.name}, based in {profile.city}. {profile.year} in {profile.major} at{" "}
-            {profile.university}. At <span className="text-[#f3eee6]">TKDS MENA</span> I own the
-            mobile surface for a broadcasting company. Ten apps are live on Android or iOS —
-            Fizz Party, TKDS Streamer, NGN, TKDS Sports, BikMedia, TKDS Radio, Maadi Sports,
-            Antlersn (ASN TV), Sports Flix, and Southwest Ohio.
+            I’m {profile.name}, based in {profile.city}. Mid-level Flutter engineer, {profile.year}{" "}
+            in {profile.major} at {profile.university}. At{" "}
+            <span className="text-[#f3eee6]">TKDS MENA</span> I own production mobile for a
+            broadcasting company — not intern tasks. Ten apps live on Android or iOS: Fizz Party,
+            TKDS Streamer, NGN, TKDS Sports, BikMedia, TKDS Radio, Maadi Sports, ASN TV, Sports
+            Flix, and Southwest Ohio.
           </p>
           <p>
-            Outside the CV line-items: BikMedia (Agora, filters, Game Live fetcher), Pasty (design
-            your cake and buy sweets — launching soon), Windows VAR, NDI into OBS. Trained at DEPI,
-            Route Academy, and Digital HUB. I care about UI that feels finished and streams that
-            don’t drop frames.
+            Also: BikMedia (Agora, filters, Game Live fetcher), Pasty (launching soon), Windows VAR,
+            NDI into OBS. Earlier training at DEPI, Route Academy, and Digital HUB — the current
+            work is production ownership.
           </p>
         </motion.div>
       </div>

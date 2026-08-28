@@ -16,8 +16,8 @@ export function Contact() {
           Let’s build the next live thing.
         </motion.h2>
         <p className="mx-auto mt-5 max-w-xl text-[#8b93a7]">
-          Cairo-based Flutter developer at TKDS MENA. Open to mobile roles, broadcast products,
-          and consumer apps. Arabic native, English intermediate. Send the brief.
+          Cairo-based mid-level Flutter engineer at TKDS MENA. Open to mid-level / product mobile
+          roles in streaming, sports, and consumer apps. Arabic native, English intermediate.
         </p>
         <div className="mt-10 flex flex-wrap justify-center gap-3">
           <a

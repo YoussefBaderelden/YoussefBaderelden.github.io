@@ -1,16 +1,16 @@
 export const profile = {
   name: "Youssef Bader El Den",
   first: "Youssef",
-  role: "Flutter Mobile Developer",
+  role: "Mid-level Flutter Engineer",
   tagline:
-    "Cross-platform apps that ship — live streaming, sports media, payments, and product.",
+    "Production Flutter — live streaming, sports media, payments. Not a junior profile.",
   city: "Cairo, Egypt",
   university: "Zagazig University — Faculty of Engineering",
   major: "Computer Engineering",
   year: "3rd year · Very Good",
   educationPeriod: "Oct 2022 – Aug 2027",
   summary:
-    "Dedicated Flutter developer with apps live on the App Store and Google Play. I work at TKDS MENA as the sole mobile developer on production streaming products, and I also ship heavier realtime work — Agora, WebRTC, NDI, filters, and Windows — that a short CV never captured.",
+    "Mid-level Flutter engineer. I own production mobile apps end to end — architecture, streaming, payments, store releases — not tutorial work. At TKDS MENA I ship live iOS and Android products on Media Core (Fizz Party, Streamer, NGN, sports networks) and I have shipped heavier realtime stacks: Agora, WebRTC, NDI, filters, Windows VAR.",
   email: "yousefhasham512@gmail.com",
   phone: "+201146066036",
   phoneHref: "tel:+201146066036",
@@ -88,12 +88,12 @@ export const skills = {
 
 export const experience = [
   {
-    role: "Flutter Mobile Developer",
+    role: "Mid-level Flutter Engineer",
     org: "TKDS MENA",
     period: "Nov 2025 – Present",
     place: "Remote · broadcasting & streaming",
     points: [
-      "Sole mobile developer. Shipped 10 production apps live on Android and/or iOS, wired into the TKDS Media Core platform.",
+      "Own the mobile stack as a mid-level engineer: 10 production apps live on Android and/or iOS on the TKDS Media Core platform.",
       "Fizz Party — social live streaming with Fizzer profiles, live rooms, search, favourites, and dark theme. Live on the App Store and Google Play.",
       "TKDS Streamer — go live from phone or iPad. RTMP plus WebRTC and NDI local broadcast into OBS / vMix, camera switch, mic mute, immersive controls.",
       "NGN (National Golf Network) — live and on-demand golf: high school, collegiate, and amateur events, with subscription and payment flows. Live on both stores.",
@@ -166,7 +166,7 @@ export const projects: Project[] = [
     name: "Fizz Party",
     blurb: "Social live streaming — Fizzer profiles, live rooms, search, favourites. Live on both stores.",
     story:
-      "Production social live-streaming app for TKDS MENA. Fizzer profile pages, live stream viewing, discovery, search, favourites, dark theme, and realtime content. Shipped as the sole mobile developer. Live on the App Store and Google Play.",
+      "Production social live-streaming app for TKDS MENA. I owned the Flutter client: Fizzer profiles, live rooms, search, favourites, dark theme. Live on the App Store and Google Play.",
     tags: ["Live streaming", "Firebase", "REST", "Dark theme", "Search"],
     platforms: ["iOS", "Android"],
     logo: "./apps/fizz-party.png",

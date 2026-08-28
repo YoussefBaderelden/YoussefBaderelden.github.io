@@ -1,9 +1,9 @@
 # Youssef Bader El Den
 
-### Flutter Mobile Developer · TKDS MENA  
-**Cairo, Egypt** · 3rd year Computer Engineering @ Zagazig University (Very Good)
+### Mid-level Flutter Engineer · TKDS MENA  
+**Cairo, Egypt** · Computer Engineering @ Zagazig University
 
-Ten production apps live on **Android or iOS**. I also build Agora, WebRTC, NDI, payments, and product apps the short CV never fully listed.
+Not a junior profile. I own **production** Flutter apps on the App Store and Google Play — live streaming, sports media, Agora, WebRTC, NDI, payments.
 
 **Live site → [youssefbaderelden.github.io](https://youssefbaderelden.github.io)**
 
@@ -11,8 +11,8 @@ Ten production apps live on **Android or iOS**. I also build Agora, WebRTC, NDI,
 
 ### Now
 
-**Flutter Mobile Developer @ TKDS MENA** — Nov 2025 – Present  
-Sole mobile developer for a broadcasting / streaming company. Media Core, live apps, radio, VAR, Windows.
+**Mid-level Flutter Engineer @ TKDS MENA** — Nov 2025 – Present  
+Own the mobile stack for a broadcasting / streaming company. Media Core, live apps, radio, VAR, Windows.
 
 ---
 
