@@ -1,11 +1,4 @@
 <div align="center">
-  <img src="https://youssefbaderelden.github.io/banner.svg" alt="Youssef Bader El Den — Mid-level Flutter Engineer" width="100%" />
-</div>
-
-<br />
-
-<div align="center">
-  <img src="https://youssefbaderelden.github.io/me/youssef.jpg" width="148" alt="Youssef Bader El Den" />
   <h1>Youssef Bader El Den</h1>
   <h3>Mid-level Flutter Engineer · TKDS MENA · Cairo, Egypt</h3>
   <p>
