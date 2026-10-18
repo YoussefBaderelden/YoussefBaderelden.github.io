@@ -22,7 +22,7 @@ export const profile = {
 };
 
 export const stats = [
-  { value: "10", label: "Live on iOS / Android" },
+  { value: "11", label: "Live on iOS / Android" },
   { value: "20+", label: "Apps built" },
   { value: "4", label: "Platforms", detail: "iOS · Android · Windows · Web" },
   { value: "Nov ’25", label: "TKDS MENA" },
@@ -236,16 +236,20 @@ export const projects: Project[] = [
   {
     id: "pasty",
     name: "Pasty",
-    blurb: "Design your cake. Order sweets. Pay. Launching soon.",
+    blurb: "Design cakes, order sweets, and pay. Live on iOS and Android.",
     story:
-      "Consumer app for designing cakes yourself — shapes, layers, frost shaders, plates — then buying cakes and sweets with maps, delivery QR, and local payment rails. Clean architecture with BLoC, customer + designer flavors, Arabic + English. Finishing for launch.",
+      "Live consumer app for designing cakes with shapes, layers, frost shaders, and plates, then ordering cakes and sweets. Includes customer and designer experiences, maps, delivery QR, local payment options, and Arabic and English support.",
     tags: ["Cake customizer", "Shaders", "BLoC", "Payments", "Maps", "Hive"],
     platforms: ["iOS", "Android"],
     logo: "./apps/pasty.png",
     accent: "#f2a7c3",
     featured: true,
-    status: "Launching soon",
+    liveNo: 11,
+    liveOn: ["iOS", "Android"],
+    status: "Live · iOS & Android",
     category: "product",
+    appStore: "https://apps.apple.com/us/app/basty-باستي/id6766212636?platform=mac",
+    playStore: "https://play.google.com/store/apps/details?id=com.basty.app",
   },
   {
     id: "radio",

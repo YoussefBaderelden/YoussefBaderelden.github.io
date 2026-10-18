@@ -26,14 +26,14 @@ export function About() {
             I’m {profile.name}, based in {profile.city}. Mid-level Flutter engineer, {profile.year}{" "}
             in {profile.major} at {profile.university}. At{" "}
             <span className="text-ink">TKDS MENA</span> I own production mobile for a broadcasting
-            company — not intern tasks. Ten apps live on Android or iOS: Fizz Party, TKDS Streamer,
-            NGN, TKDS Sports, BikMedia, TKDS Radio, Maadi Sports, ASN TV, Sports Flix, and Southwest
-            Ohio.
+            company — not intern tasks. Across my work, 11 apps are live on Android or iOS: Fizz
+            Party, TKDS Streamer, NGN, TKDS Sports, BikMedia, Pasty, TKDS Radio, Maadi Sports, ASN
+            TV, Sports Flix, and Southwest Ohio.
           </p>
           <p>
-            Also: BikMedia (Agora, filters, Game Live fetcher), Pasty (launching soon), Windows VAR,
-            NDI into OBS. Earlier training at DEPI, Route Academy, and Digital HUB — the current
-            work is production ownership.
+            Also: BikMedia (Agora, filters, Game Live fetcher), Pasty (live on iOS and Android),
+            Windows VAR, NDI into OBS. Earlier training at DEPI, Route Academy, and Digital HUB —
+            the current work is production ownership.
           </p>
         </motion.div>
       </div>

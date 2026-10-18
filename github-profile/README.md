@@ -31,7 +31,7 @@
 
 ### Snapshot
 
-| 10 live | 20+ apps | 4 platforms | Since Nov 2025 |
+| 11 live | 20+ apps | 4 platforms | Since Nov 2025 |
 | :---: | :---: | :---: | :---: |
 | iOS / Android | Built & shipped | iOS · Android · Windows · Web | TKDS MENA |
 
@@ -53,6 +53,7 @@ Production work: **Agora**, **WebRTC**, **NDI**, **RTMP**, **FFmpeg**, Firebase,
 | 08 | <img src="https://youssefbaderelden.github.io/apps/antlersn.png" width="40" alt="ASN TV" /> | **[ASN TV](https://youssefbaderelden.github.io/#project/antlersn)** | [Google Play](https://play.google.com/store/apps/details?id=com.tkds.antlersn) |
 | 09 | <img src="https://youssefbaderelden.github.io/apps/sportsflix.png" width="40" alt="Sports Flix" /> | **[Sports Flix -SF](https://youssefbaderelden.github.io/#project/sportsflix)** | [Google Play](https://play.google.com/store/apps/details?id=com.tkds.sportsfixlive) |
 | 10 | <img src="https://youssefbaderelden.github.io/apps/southwest-ohio.png" width="40" alt="Southwest Ohio" /> | **[Southwest Ohio - SWOH](https://youssefbaderelden.github.io/#project/swo)** | [Google Play](https://play.google.com/store/apps/details?id=com.tkds.southwestohio) |
+| 11 | <img src="https://youssefbaderelden.github.io/apps/pasty.png" width="40" alt="Pasty" /> | **[Pasty](https://youssefbaderelden.github.io/#project/pasty)** | [App Store](https://apps.apple.com/us/app/basty-باستي/id6766212636?platform=mac) · [Google Play](https://play.google.com/store/apps/details?id=com.basty.app) |
 
 ---
 
@@ -69,7 +70,6 @@ Production work: **Agora**, **WebRTC**, **NDI**, **RTMP**, **FFmpeg**, Firebase,
 
 | | Project | |
 | :---: | --- | --- |
-| <img src="https://youssefbaderelden.github.io/apps/pasty.png" width="40" alt="Pasty" /> | **[Pasty](https://youssefbaderelden.github.io/#project/pasty)** | Design-your-cake commerce · launching soon |
 | <img src="https://youssefbaderelden.github.io/apps/playtoowin.png" width="40" alt="PlayTooWin" /> | **[PlayTooWin](https://youssefbaderelden.github.io/#project/playtoowin)** | Live bingo on the web |
 | <img src="https://youssefbaderelden.github.io/apps/scorecue.png" width="40" alt="Score Cue" /> | **[Score Cue](https://youssefbaderelden.github.io/#project/scorecue)** | Sideline / booth live scoring |
 

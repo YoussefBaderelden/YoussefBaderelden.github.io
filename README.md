@@ -6,6 +6,10 @@ Mid-level Flutter engineer in Cairo, Egypt. This repo is the source. GitHub Page
 
 **GitHub profile:** [github.com/YoussefBaderelden](https://github.com/YoussefBaderelden)
 
+## Featured App
+
+**Pasty** is live on iOS and Android: [App Store](https://apps.apple.com/us/app/basty-باستي/id6766212636?platform=mac) · [Google Play](https://play.google.com/store/apps/details?id=com.basty.app)
+
 ## Run locally
 
 ```bash
