@@ -17,7 +17,7 @@ export const profile = {
   phoneHref: "tel:+201146066036",
   github: "https://github.com/YoussefBaderelden",
   linkedin: "https://www.linkedin.com/in/yousef-bader-el-den",
-  photo: "./me/youssef.jpg",
+  photo: "./me/youssef-avatar-3d.png",
   languages: ["Arabic (Native)", "English (Intermediate)"],
 };
 
