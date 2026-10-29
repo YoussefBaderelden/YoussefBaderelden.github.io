@@ -208,6 +208,8 @@ function LiveStrip() {
               <span className="flex gap-2 text-[10px] text-mute">
                 {p.appStore && <span>iOS</span>}
                 {p.playStore && <span>Android</span>}
+                {p.microsoftStore && <span>Windows</span>}
+                {p.website && <span>Web</span>}
               </span>
             </span>
           </button>

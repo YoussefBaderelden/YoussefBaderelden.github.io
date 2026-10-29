@@ -140,7 +140,7 @@ export function Hero() {
             transition={{ delay: 1.4 }}
             className="mt-5 max-w-xl text-lg leading-relaxed text-mute"
           >
-            Production apps on iOS & Android — <span className="text-ink">11 live in stores</span>.
+            Production apps on iOS, Android, Windows & Web — <span className="text-ink">13 live products</span>.
             Agora, WebRTC, NDI, payments. Not a junior profile.
           </motion.p>
 

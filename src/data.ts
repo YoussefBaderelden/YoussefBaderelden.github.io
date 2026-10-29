@@ -22,7 +22,7 @@ export const profile = {
 };
 
 export const stats = [
-  { value: "11", label: "Live on iOS / Android" },
+  { value: "13", label: "Live products" },
   { value: "20+", label: "Apps built" },
   { value: "4", label: "Platforms", detail: "iOS · Android · Windows · Web" },
   { value: "Nov ’25", label: "TKDS MENA" },
@@ -159,7 +159,7 @@ export type Project = {
   microsoftStore?: string;
   website?: string;
   liveNo?: number;
-  liveOn?: ("Android" | "iOS")[];
+  liveOn?: ("Android" | "iOS" | "Windows" | "Web")[];
   category: "live" | "sports" | "product" | "tools";
 };
 
@@ -294,6 +294,8 @@ export const projects: Project[] = [
     platforms: ["Windows", "Android", "iOS"],
     logo: "./apps/tkds-var.png",
     accent: "#f5c542",
+    liveNo: 12,
+    liveOn: ["Windows"],
     category: "tools",
     status: "Published · Microsoft Store",
     microsoftStore: "https://apps.microsoft.com/detail/9nhp3hphp9t3",
@@ -368,6 +370,8 @@ export const projects: Project[] = [
     accent: "#22c55e",
     story:
       "PlayTooWin is a live bingo experience built as a web-first product. Players sign in, buy cards, and follow the live stream at playtoowin.com.",
+    liveNo: 13,
+    liveOn: ["Web"],
     category: "product",
     status: "Live on web",
     website: "https://playtoowin.com/",
@@ -382,6 +386,7 @@ export const projects: Project[] = [
     accent: "#38bdf8",
     story: "Sideline / booth scoring client so operators can push live scores into the TKDS stack.",
     category: "sports",
+    status: "Production ops tool",
   },
 ];
 

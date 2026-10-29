@@ -8,6 +8,7 @@ interface PresentationDockProps {
   onSetSlide: (index: number) => void;
   onPrev: () => void;
   onNext: () => void;
+  onOpenVideo: () => void;
 }
 
 const slideLabels = [
@@ -27,6 +28,7 @@ export function PresentationDock({
   onSetSlide,
   onPrev,
   onNext,
+  onOpenVideo,
 }: PresentationDockProps) {
   return (
     <>
@@ -56,6 +58,14 @@ export function PresentationDock({
 
         {/* Direct Links */}
         <div className="flex items-center gap-2 sm:gap-3">
+          <button
+            onClick={onOpenVideo}
+            className="flex items-center gap-1.5 rounded-full border border-red-500/50 bg-red-500/15 px-2.5 py-1 sm:px-3.5 sm:py-1.5 font-mono text-[11px] sm:text-xs font-semibold text-white shadow-[0_0_12px_rgba(227,6,19,0.3)] transition-all hover:bg-red-500 hover:text-white"
+          >
+            <span className="inline-block h-1.5 w-1.5 rounded-full bg-red-400 animate-pulse" />
+            <span>▶ Reel</span>
+          </button>
+
           <a
             href={WHATSAPP_URL}
             target="_blank"

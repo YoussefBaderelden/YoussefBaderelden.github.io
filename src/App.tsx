@@ -14,6 +14,7 @@ import { SlideSkillsRadar } from "./components/presentation/SlideSkillsRadar";
 import { SlideExperience } from "./components/presentation/SlideExperience";
 import { SlideContact } from "./components/presentation/SlideContact";
 import { ProjectDossierModal } from "./components/presentation/ProjectDossierModal";
+import { VideoShowcaseModal } from "./components/presentation/VideoShowcaseModal";
 import { type Project } from "./data";
 
 const TOTAL_SLIDES = 5;
@@ -22,23 +23,24 @@ function PresentationStage() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [activeAccent, setActiveAccent] = useState("#4ad4c2");
   const [inspectProject, setInspectProject] = useState<Project | null>(null);
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
 
   const isTransitioning = useRef(false);
 
   const goToNext = () => {
-    if (inspectProject) return;
+    if (inspectProject || isVideoModalOpen) return;
     setCurrentSlide((prev) => (prev + 1) % TOTAL_SLIDES);
   };
 
   const goToPrev = () => {
-    if (inspectProject) return;
+    if (inspectProject || isVideoModalOpen) return;
     setCurrentSlide((prev) => (prev - 1 + TOTAL_SLIDES) % TOTAL_SLIDES);
   };
 
   // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (inspectProject) return;
+      if (inspectProject || isVideoModalOpen) return;
       if (e.key === "ArrowRight") {
         goToNext();
       } else if (e.key === "ArrowLeft") {
@@ -57,7 +59,7 @@ function PresentationStage() {
     let accumulatedDelta = 0;
 
     const handleWheel = (e: WheelEvent) => {
-      if (inspectProject) return;
+      if (inspectProject || isVideoModalOpen) return;
       const now = Date.now();
       if (now - lastTransition < 700) return;
 
@@ -174,6 +176,7 @@ function PresentationStage() {
         onSetSlide={setCurrentSlide}
         onPrev={goToPrev}
         onNext={goToNext}
+        onOpenVideo={() => setIsVideoModalOpen(true)}
       />
 
       {/* 6. Active Presentation Slide Scene */}
@@ -191,6 +194,7 @@ function PresentationStage() {
               <SlideIntro
                 onExploreArchive={() => setCurrentSlide(1)}
                 onContact={() => setCurrentSlide(4)}
+                onOpenVideo={() => setIsVideoModalOpen(true)}
               />
             </motion.div>
           )}
@@ -256,6 +260,12 @@ function PresentationStage() {
       <ProjectDossierModal
         project={inspectProject}
         onClose={() => setInspectProject(null)}
+      />
+
+      {/* 8. AI Marketing Showcase Video Modal */}
+      <VideoShowcaseModal
+        isOpen={isVideoModalOpen}
+        onClose={() => setIsVideoModalOpen(false)}
       />
     </div>
   );

@@ -1,16 +1,21 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { profile } from "../../data";
+import { profile, projects } from "../../data";
 
 interface SlideIntroProps {
   onExploreArchive: () => void;
   onContact: () => void;
+  onOpenVideo: () => void;
 }
 
 const WHATSAPP_URL =
   "https://wa.me/201146066036?text=Hi%20Yousef,%20I%20saw%20your%20Flutter%20portfolio%20and%20would%20like%20to%20connect!";
 
-export function SlideIntro({ onExploreArchive, onContact }: SlideIntroProps) {
+export function SlideIntro({
+  onExploreArchive,
+  onContact,
+  onOpenVideo,
+}: SlideIntroProps) {
   return (
     <div
       id="active-slide-scroll"
@@ -64,11 +69,22 @@ export function SlideIntro({ onExploreArchive, onContact }: SlideIntroProps) {
           <p className="mt-3.5 text-sm sm:text-base leading-relaxed text-mute">
             I architect and ship high-concurrency production Flutter systems:
             live streaming, Agora RTC, WebRTC, local NDI into OBS, and payment
-            gateways across 11 store-published applications.
+            gateways across {projects.length} shipped applications.
           </p>
 
           {/* Action Buttons */}
           <div className="mt-6 flex flex-wrap items-center gap-2.5">
+            <button
+              onClick={onOpenVideo}
+              className="group flex items-center gap-2 rounded-full border border-red-500/50 bg-red-500/15 px-5 py-3 sm:px-6 sm:py-3.5 font-mono text-[11px] sm:text-xs font-bold uppercase tracking-wider text-white backdrop-blur-md transition-all hover:bg-red-500/30 hover:border-red-400 hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(227,6,19,0.35)]"
+            >
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-400 opacity-75"></span>
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-red-500"></span>
+              </span>
+              <span>▶ WATCH SHOWCASE REEL</span>
+            </button>
+
             <button
               onClick={onExploreArchive}
               className="btn-signal group flex items-center gap-2 rounded-full px-5 py-3 sm:px-6 sm:py-3.5 font-mono text-[11px] sm:text-xs font-bold uppercase tracking-wider transition-all hover:scale-105 active:scale-95 shadow-[0_0_25px_rgba(74,212,194,0.35)]"
@@ -145,13 +161,13 @@ export function SlideIntro({ onExploreArchive, onContact }: SlideIntroProps) {
         >
           <div className="rounded-2xl border border-line/80 bg-panel/75 p-3.5 sm:p-5 backdrop-blur-md">
             <div className="flex items-baseline justify-between">
-              <span className="font-display text-2xl sm:text-4xl text-signal">11</span>
+              <span className="font-display text-2xl sm:text-4xl text-signal">{projects.length}</span>
               <span className="font-mono text-[9px] sm:text-[10px] uppercase tracking-widest text-mute">
-                LIVE
+                SHIPPED
               </span>
             </div>
             <p className="mt-1 text-[11px] sm:text-xs text-mute line-clamp-2">
-              App Store, Google Play &amp; Microsoft.
+              iOS · Android · Windows · Web
             </p>
           </div>
 

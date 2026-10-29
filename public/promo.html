@@ -1,0 +1,1453 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yousef Badr — 60s Showreel</title>
+    <meta
+      name="description"
+      content="60-second animated showreel for Yousef Badr, mid-level Flutter engineer. 13 live products across iOS, Android, Windows, and web."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&family=Syne:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+:root {
+  --page: #0a0e14;
+  --panel: #12171f;
+  --ink: #f4f5f7;
+  --mute: #7a8394;
+  --line: rgba(255, 255, 255, 0.1);
+  --signal: #4ad4c2;
+  --live: #e30613;
+  --glow: #00ffcc;
+  --font-display: "Syne", sans-serif;
+  --font-body: "Outfit", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+* { box-sizing: border-box; }
+html, body {
+  margin: 0; height: 100%; overflow: hidden; background: #000;
+  color: var(--ink); font-family: var(--font-body);
+}
+button { font-family: inherit; }
+#viewport { position: fixed; inset: 0; overflow: hidden; background: #000; }
+#stage {
+  position: absolute; top: 0; left: 0; width: 1920px; height: 1080px;
+  overflow: hidden; background: var(--page); transform-origin: top left;
+}
+
+/* background */
+.bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(900px 620px at 14% 18%, rgba(74, 212, 194, 0.11), transparent 62%),
+    radial-gradient(820px 620px at 88% 84%, rgba(227, 6, 19, 0.09), transparent 62%),
+    radial-gradient(700px 500px at 55% 50%, rgba(0, 255, 204, 0.04), transparent 70%),
+    var(--page);
+}
+.grid {
+  position: absolute; inset: -80px;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 80px 80px;
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 35%, transparent 82%);
+  mask-image: radial-gradient(circle at 50% 50%, #000 35%, transparent 82%);
+  animation: gridDrift 28s linear infinite;
+}
+@keyframes gridDrift { from { transform: translate3d(0,0,0); } to { transform: translate3d(80px,80px,0); } }
+.orb {
+  position: absolute; border-radius: 50%; filter: blur(110px);
+  pointer-events: none; animation: drift 18s ease-in-out infinite;
+}
+.orb-a { width: 520px; height: 520px; left: -160px; top: 80px; background: rgba(74,212,194,.14); }
+.orb-b { width: 620px; height: 620px; right: -220px; bottom: -120px; background: rgba(227,6,19,.12); animation-delay: -7s; }
+.orb-c { width: 420px; height: 420px; left: 44%; top: 40%; background: rgba(0,255,204,.05); animation-delay: -12s; }
+@keyframes drift {
+  0%, 100% { transform: translate(0,0) scale(1); }
+  33% { transform: translate(4%,-6%) scale(1.08); }
+  66% { transform: translate(-3%,5%) scale(.96); }
+}
+
+/* chrome */
+.topbar {
+  position: absolute; top: 0; left: 0; right: 0; height: 92px; padding: 0 58px;
+  display: flex; align-items: center; justify-content: space-between; z-index: 40;
+  font-family: var(--font-mono); font-size: 12px; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--mute); transition: opacity .35s ease;
+}
+.topbar.hide .controls { opacity: 0; pointer-events: none; }
+.brand { display: flex; align-items: center; gap: 12px; }
+.brand b { color: var(--ink); font-weight: 500; }
+.brand .live-dot { width: 8px; height: 8px; }
+.top-right { display: flex; align-items: center; gap: 20px; }
+.scene-label { color: var(--signal); }
+.controls { display: flex; gap: 8px; transition: opacity .3s ease; }
+.controls button {
+  border: 1px solid var(--line); background: rgba(255,255,255,.04); color: var(--mute);
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: .14em;
+  text-transform: uppercase; padding: 8px 13px; border-radius: 999px;
+  cursor: pointer; transition: .2s ease;
+}
+.controls button:hover {
+  color: var(--ink); border-color: rgba(74,212,194,.55); background: rgba(74,212,194,.08);
+}
+.controls button.off { opacity: .4; }
+.corner {
+  position: absolute; width: 34px; height: 34px;
+  border: 1px solid rgba(74,212,194,.35); z-index: 20; pointer-events: none;
+}
+.corner.tl { top: 24px; left: 24px; border-right: 0; border-bottom: 0; }
+.corner.tr { top: 24px; right: 24px; border-left: 0; border-bottom: 0; }
+.corner.bl { bottom: 24px; left: 24px; border-right: 0; border-top: 0; }
+.corner.br { bottom: 24px; right: 24px; border-left: 0; border-top: 0; }
+.grain, .scanlines, .vignette { position: absolute; inset: 0; pointer-events: none; }
+.grain {
+  z-index: 50; opacity: .05; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.scanlines {
+  z-index: 49; opacity: .025;
+  background: repeating-linear-gradient(to bottom, transparent 0px, transparent 2px, rgba(255,255,255,.2) 3px);
+}
+.vignette { z-index: 48; box-shadow: inset 0 0 260px rgba(0,0,0,.75); }
+
+/* scenes + motion */
+.scene {
+  position: absolute; inset: 0; padding: 128px 96px 118px;
+  opacity: 0; visibility: hidden; transition: opacity .5s ease, visibility .5s ease; z-index: 10;
+}
+.scene.active { opacity: 1; visibility: visible; }
+.anim { opacity: 0; }
+.scene.active .anim {
+  animation: fadeUp .8s cubic-bezier(.22,1,.36,1) forwards; animation-delay: var(--d, 0s);
+}
+.scene.active .anim.pop { animation-name: popIn; }
+.scene.active .anim.left { animation-name: slideLeft; }
+.scene.active .anim.right { animation-name: slideRight; }
+.scene.active .anim.fade { animation-name: fadeIn; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(38px); } to { opacity: 1; transform: none; } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes popIn { 0% { opacity: 0; transform: scale(.86) translateY(18px); } 100% { opacity: 1; transform: none; } }
+@keyframes slideLeft { from { opacity: 0; transform: translateX(56px); } to { opacity: 1; transform: none; } }
+@keyframes slideRight { from { opacity: 0; transform: translateX(-56px); } to { opacity: 1; transform: none; } }
+
+/* shared */
+.live-dot {
+  display: inline-block; width: 10px; height: 10px; border-radius: 50%;
+  background: var(--live); box-shadow: 0 0 16px rgba(227,6,19,.9);
+  animation: pulseLive 1.4s ease-in-out infinite;
+}
+@keyframes pulseLive {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: .55; transform: scale(.75); }
+}
+.eyebrow {
+  display: flex; align-items: center; gap: 14px; font-family: var(--font-mono);
+  font-size: 15px; letter-spacing: .28em; text-transform: uppercase; color: var(--signal);
+}
+.eyebrow::before { content: ""; width: 38px; height: 1px; background: var(--signal); }
+.section-title {
+  margin: 18px 0 0; font-family: var(--font-display); font-weight: 800;
+  font-size: 74px; line-height: .98; letter-spacing: -.035em;
+}
+.section-sub { margin: 16px 0 0; font-size: 22px; color: var(--mute); }
+.signal { color: var(--signal); }
+.hud-tag {
+  display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-mono);
+  font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--mute);
+  border: 1px solid var(--line); border-radius: 999px; padding: 8px 14px;
+  background: rgba(255,255,255,.03); white-space: nowrap;
+}
+
+/* hook */
+.hook-wrap {
+  position: relative; height: 100%; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; text-align: center;
+}
+.ghost {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%);
+  font-family: var(--font-display); font-weight: 800; font-size: 560px; line-height: 1;
+  letter-spacing: -.07em; color: transparent; -webkit-text-stroke: 2px rgba(74,212,194,.07);
+  user-select: none;
+}
+.hook-badge {
+  position: relative; display: inline-flex; align-items: center; gap: 12px;
+  font-family: var(--font-mono); font-size: 14px; letter-spacing: .26em;
+  text-transform: uppercase; color: var(--signal); margin-bottom: 34px;
+}
+.hook-line {
+  position: relative; margin: 0; font-family: var(--font-display); font-weight: 800;
+  font-size: 96px; line-height: .96; letter-spacing: -.045em; white-space: nowrap;
+}
+.hook-line.signal { margin-top: 8px; color: var(--signal); text-shadow: 0 0 70px rgba(74,212,194,.3); }
+.hook-sub {
+  position: relative; margin: 36px 0 0; font-family: var(--font-mono); font-size: 15px;
+  letter-spacing: .24em; text-transform: uppercase; color: var(--mute);
+}
+.glitch { position: relative; display: inline-block; }
+.glitch::before, .glitch::after {
+  content: attr(data-text); position: absolute; inset: 0; pointer-events: none; opacity: .22;
+}
+.glitch::before {
+  color: var(--glow); transform: translate(-2px,0); clip-path: inset(44% 0 46% 0);
+  animation: glitchA 3.2s steps(1) infinite;
+}
+.glitch::after {
+  color: var(--live); transform: translate(2px,0); clip-path: inset(54% 0 36% 0);
+  animation: glitchB 2.6s steps(1) infinite;
+}
+@keyframes glitchA {
+  0%, 92%, 100% { clip-path: inset(8% 0 58% 0); transform: translate(-3px,0); }
+  93% { clip-path: inset(38% 0 22% 0); transform: translate(-8px,1px); }
+  96% { clip-path: inset(64% 0 6% 0); transform: translate(5px,-1px); }
+}
+@keyframes glitchB {
+  0%, 90%, 100% { clip-path: inset(56% 0 8% 0); transform: translate(3px,0); }
+  91% { clip-path: inset(12% 0 64% 0); transform: translate(7px,1px); }
+  95% { clip-path: inset(72% 0 4% 0); transform: translate(-5px,-1px); }
+}
+/* intro */
+.intro {
+  height: 100%; max-width: 1620px; margin: 0 auto; display: grid;
+  grid-template-columns: 430px 1fr; gap: 92px; align-items: center;
+}
+.portrait { position: relative; width: 400px; height: 520px; justify-self: center; }
+.portrait-ring {
+  position: absolute; inset: -18px; border-radius: 42px;
+  background: conic-gradient(from 0deg, #4ad4c2, #00ffcc, transparent 35%, #e30613, #4ad4c2);
+  filter: blur(16px); opacity: .42; animation: spin 8s linear infinite;
+}
+.portrait-glow {
+  position: absolute; inset: -44px; border-radius: 60px;
+  background: radial-gradient(circle, rgba(74,212,194,.18), transparent 68%); filter: blur(28px);
+}
+.portrait img {
+  position: relative; width: 100%; height: 100%; object-fit: cover; border-radius: 32px;
+  border: 1px solid rgba(255,255,255,.16); filter: saturate(1.04) contrast(1.02);
+}
+.portrait::after {
+  content: ""; position: absolute; inset: 0; border-radius: 32px;
+  background: linear-gradient(to top, rgba(0,0,0,.75), transparent 42%); pointer-events: none;
+}
+.scanline {
+  position: absolute; left: 0; top: 0; width: 100%; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--signal), transparent);
+  animation: scan 3.4s ease-in-out infinite; z-index: 2; pointer-events: none;
+}
+@keyframes scan {
+  0% { top: 0; opacity: 0; } 10% { opacity: 1; }
+  90% { opacity: .6; } 100% { top: 100%; opacity: 0; }
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.portrait-tag {
+  position: absolute; left: 24px; bottom: 24px; z-index: 3; display: flex;
+  align-items: center; gap: 10px; font-family: var(--font-mono); font-size: 11px;
+  letter-spacing: .2em; text-transform: uppercase; color: var(--signal);
+}
+.intro-copy { padding-bottom: 8px; }
+.big-name {
+  margin: 18px 0 0; font-family: var(--font-display); font-weight: 800;
+  font-size: 156px; line-height: .84; letter-spacing: -.055em;
+}
+.big-name span { color: var(--signal); text-shadow: 0 0 60px rgba(74,212,194,.22); }
+.intro-role {
+  margin: 30px 0 0; max-width: 780px; font-size: 27px; line-height: 1.4; color: var(--mute);
+}
+.intro-role b { color: var(--ink); font-weight: 500; }
+.meta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+
+/* stats */
+.stats-head { display: flex; align-items: flex-end; justify-content: space-between; }
+.stats-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; margin-top: 62px; }
+.stat {
+  position: relative; overflow: hidden; border: 1px solid var(--line); border-radius: 24px;
+  padding: 40px 34px 34px;
+  background: linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.012));
+}
+.stat::before {
+  content: ""; position: absolute; left: 0; top: 0; width: 100%; height: 2px;
+  background: linear-gradient(90deg, var(--signal), transparent 80%);
+}
+.stat .num {
+  font-family: var(--font-display); font-weight: 800; font-size: 122px; line-height: .9;
+  letter-spacing: -.04em; color: var(--signal); text-shadow: 0 0 50px rgba(74,212,194,.25);
+}
+.stat .num .plus { font-size: 64px; }
+.stat .num.date { font-size: 54px; letter-spacing: -.02em; padding: 34px 0 32px; }
+.stat .label {
+  margin-top: 18px; font-family: var(--font-mono); font-size: 13px;
+  letter-spacing: .2em; text-transform: uppercase; color: var(--ink);
+}
+.stat .detail { margin-top: 10px; font-size: 14px; line-height: 1.45; color: var(--mute); }
+.platform-strip {
+  display: flex; align-items: center; justify-content: space-between; margin-top: 40px;
+  padding: 22px 30px; border: 1px solid var(--line); border-radius: 16px;
+  background: rgba(255,255,255,.025); font-family: var(--font-mono); font-size: 13px;
+  letter-spacing: .16em; text-transform: uppercase; color: var(--mute);
+}
+.platform-strip b { color: var(--signal); font-weight: 500; }
+
+/* apps */
+.apps-head { display: flex; align-items: flex-end; justify-content: space-between; }
+.apps-badge {
+  display: flex; align-items: center; gap: 12px; font-family: var(--font-mono);
+  font-size: 13px; letter-spacing: .18em; text-transform: uppercase; color: var(--live);
+}
+.apps-grid {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-top: 38px;
+}
+.app-card {
+  width: 214px; padding: 18px 12px 16px; border: 1px solid var(--line); border-radius: 20px;
+  background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.015));
+  text-align: center; opacity: 0;
+}
+.scene.active .app-card {
+  animation: popIn .5s cubic-bezier(.22,1,.36,1) forwards;
+  animation-delay: calc(.22s + var(--i) * .05s);
+}
+.app-card img {
+  width: 82px; height: 82px; border-radius: 18px; object-fit: cover;
+  border: 1px solid rgba(255,255,255,.14); background: #0d1117;
+}
+.app-card .name {
+  margin-top: 12px; font-size: 14px; font-weight: 600; white-space: nowrap;
+  overflow: hidden; text-overflow: ellipsis;
+}
+.app-card .plat {
+  margin-top: 4px; font-family: var(--font-mono); font-size: 9px;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--mute);
+}
+.apps-foot {
+  margin-top: 30px; text-align: center; font-family: var(--font-mono); font-size: 12px;
+  letter-spacing: .16em; text-transform: uppercase; color: var(--mute);
+}
+.apps-foot b { color: var(--signal); font-weight: 500; }
+/* stack */
+.stack-wrap {
+  height: 100%; display: flex; flex-direction: column; align-items: center;
+  justify-content: center; text-align: center;
+}
+.stack-wrap .eyebrow { justify-content: center; }
+.chips {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 14px;
+  max-width: 1520px; margin-top: 52px;
+}
+.chip {
+  font-family: var(--font-display); font-weight: 700; font-size: 25px;
+  letter-spacing: -.01em; padding: 15px 25px; border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.13); background: rgba(255,255,255,.03);
+  color: var(--ink); opacity: 0;
+}
+.chip.hot {
+  border-color: rgba(74,212,194,.45); background: rgba(74,212,194,.07); color: var(--signal);
+}
+.chip.red { border-color: rgba(227,6,19,.35); background: rgba(227,6,19,.06); }
+.scene.active .chip {
+  animation: popIn .45s cubic-bezier(.22,1,.36,1) forwards;
+  animation-delay: calc(.15s + var(--i) * .045s);
+}
+.stack-foot {
+  margin-top: 54px; font-family: var(--font-mono); font-size: 13px;
+  letter-spacing: .2em; text-transform: uppercase; color: var(--mute);
+}
+.stack-foot b { color: var(--signal); font-weight: 500; }
+
+/* experience + education */
+.proof-grid {
+  display: grid; grid-template-columns: 1.25fr .75fr; gap: 56px; margin-top: 46px;
+}
+.timeline { position: relative; padding-left: 34px; }
+.timeline::before {
+  content: ""; position: absolute; left: 7px; top: 8px; bottom: 10px; width: 2px;
+  background: linear-gradient(var(--signal), rgba(74,212,194,.04));
+}
+.titem { position: relative; padding-bottom: 22px; opacity: 0; }
+.scene.active .titem {
+  animation: fadeUp .6s cubic-bezier(.22,1,.36,1) forwards;
+  animation-delay: calc(.15s + var(--i) * .09s);
+}
+.titem::before {
+  content: ""; position: absolute; left: -34px; top: 7px; width: 16px; height: 16px;
+  border-radius: 50%; background: var(--page); border: 2px solid var(--signal);
+  box-shadow: 0 0 16px rgba(74,212,194,.45);
+}
+.titem .role {
+  font-family: var(--font-display); font-weight: 700; font-size: 24px; letter-spacing: -.01em;
+}
+.titem .org { color: var(--signal); font-size: 17px; margin-left: 8px; }
+.titem .when {
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--mute); margin-left: 10px; white-space: nowrap;
+}
+.titem p { margin: 5px 0 0; font-size: 15px; line-height: 1.45; color: var(--mute); max-width: 760px; }
+.edu-card {
+  position: relative; border: 1px solid var(--line); border-radius: 24px;
+  padding: 34px 34px 30px;
+  background: linear-gradient(180deg, rgba(74,212,194,.07), rgba(255,255,255,.015));
+  overflow: hidden;
+}
+.edu-card::before {
+  content: ""; position: absolute; left: 0; top: 0; width: 100%; height: 2px;
+  background: linear-gradient(90deg, var(--signal), transparent);
+}
+.edu-card .uni {
+  font-family: var(--font-display); font-weight: 700; font-size: 34px;
+  line-height: 1.08; letter-spacing: -.02em;
+}
+.edu-card .faculty { margin-top: 12px; font-size: 18px; color: var(--signal); }
+.edu-card .major { margin-top: 4px; font-size: 18px; color: var(--ink); }
+.edu-card .year {
+  margin-top: 16px; font-family: var(--font-mono); font-size: 12px;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--mute);
+}
+.edu-divider { height: 1px; background: var(--line); margin: 24px 0; }
+.edu-row {
+  display: flex; justify-content: space-between; gap: 18px; font-size: 14px;
+  color: var(--mute); margin-top: 10px;
+}
+.edu-row b { color: var(--ink); font-weight: 500; text-align: right; }
+
+/* proof / stores */
+.statement {
+  margin: 16px 0 0; font-family: var(--font-display); font-weight: 800;
+  font-size: 92px; line-height: .98; letter-spacing: -.045em;
+}
+.statement span { color: var(--signal); text-shadow: 0 0 50px rgba(74,212,194,.22); }
+.stores { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; margin-top: 48px; }
+.store {
+  border: 1px solid var(--line); border-radius: 22px; padding: 30px 30px 26px;
+  background: linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.012));
+  opacity: 0;
+}
+.scene.active .store {
+  animation: fadeUp .65s cubic-bezier(.22,1,.36,1) forwards;
+  animation-delay: calc(.2s + var(--i) * .12s);
+}
+.store .platform {
+  font-family: var(--font-mono); font-size: 12px; letter-spacing: .2em;
+  text-transform: uppercase; color: var(--mute);
+}
+.store .os {
+  margin-top: 8px; font-family: var(--font-display); font-weight: 700;
+  font-size: 40px; letter-spacing: -.02em;
+}
+.store .status {
+  display: inline-flex; align-items: center; gap: 9px; margin-top: 14px;
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: .16em;
+  text-transform: uppercase; color: var(--signal);
+}
+.store .status::before {
+  content: ""; width: 7px; height: 7px; border-radius: 50%;
+  background: var(--signal); box-shadow: 0 0 12px rgba(74,212,194,.8);
+}
+.store p { margin: 16px 0 0; font-size: 14px; line-height: 1.5; color: var(--mute); }
+.proof-strip {
+  margin-top: 34px; display: flex; justify-content: space-between; gap: 20px;
+  padding: 20px 28px; border: 1px solid var(--line); border-radius: 16px;
+  background: rgba(255,255,255,.025); font-family: var(--font-mono); font-size: 12px;
+  letter-spacing: .16em; text-transform: uppercase; color: var(--mute);
+}
+.proof-strip b { color: var(--signal); font-weight: 500; }
+
+/* CTA */
+.end {
+  height: 100%; max-width: 1620px; margin: 0 auto; display: grid;
+  grid-template-columns: 350px 1fr; gap: 78px; align-items: center;
+}
+.end-avatar-wrap { position: relative; justify-self: center; width: 320px; height: 320px; }
+.end-avatar-ring {
+  position: absolute; inset: -14px; border-radius: 50%;
+  background: conic-gradient(from 0deg, #4ad4c2, #00ffcc, transparent 40%, #e30613, #4ad4c2);
+  filter: blur(10px); opacity: .5; animation: spin 7s linear infinite;
+}
+.end-avatar {
+  position: relative; width: 100%; height: 100%; border-radius: 50%; overflow: hidden;
+  border: 2px solid rgba(74,212,194,.4); box-shadow: 0 0 70px rgba(74,212,194,.16);
+}
+.end-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.end-title {
+  margin: 16px 0 0; font-family: var(--font-display); font-weight: 800;
+  font-size: 66px; line-height: .98; letter-spacing: -.045em; max-width: 1100px;
+}
+.end-title span { color: var(--signal); text-shadow: 0 0 50px rgba(74,212,194,.22); }
+.end-name { margin-top: 24px; font-family: var(--font-display); font-weight: 700; font-size: 28px; }
+.end-name span { color: var(--mute); font-weight: 400; font-size: 20px; margin-left: 10px; }
+.contact-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 12px 38px;
+  margin-top: 26px; max-width: 1000px;
+}
+.contact-item {
+  display: flex; align-items: baseline; gap: 10px; font-family: var(--font-mono);
+  font-size: 14px; color: var(--mute); min-width: 0;
+}
+.contact-item .k {
+  font-size: 10px; letter-spacing: .16em; text-transform: uppercase;
+  color: rgba(74,212,194,.7); flex: 0 0 auto;
+}
+.contact-item .v { color: var(--ink); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.end-url {
+  margin-top: 28px; font-family: var(--font-display); font-weight: 800;
+  font-size: 38px; letter-spacing: -.02em; color: var(--signal);
+}
+.end-note {
+  margin-top: 14px; font-family: var(--font-mono); font-size: 11px;
+  letter-spacing: .16em; text-transform: uppercase; color: var(--mute);
+}
+
+/* captions + progress */
+.caption {
+  position: absolute; left: 50%; bottom: 52px; transform: translateX(-50%); z-index: 30;
+  width: calc(100% - 220px); max-width: 1320px; padding: 14px 24px;
+  border: 1px solid rgba(255,255,255,.08); border-left: 3px solid var(--signal);
+  border-radius: 10px; background: rgba(5,8,12,.68);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  text-align: center; font-size: 21px; line-height: 1.4; color: #dfe3ea;
+  transition: opacity .3s ease;
+}
+.caption:empty { opacity: 0; }
+.progress {
+  position: absolute; left: 0; bottom: 0; width: 100%; height: 5px;
+  background: rgba(255,255,255,.06); z-index: 35;
+}
+.progress .bar {
+  height: 100%; width: 0%;
+  background: linear-gradient(90deg, var(--signal), var(--glow));
+  box-shadow: 0 0 18px rgba(74,212,194,.6);
+}
+.timecode {
+  position: absolute; right: 26px; bottom: 18px; z-index: 36;
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: .12em; color: var(--mute);
+}
+.replay-pill {
+  position: absolute; right: 36px; bottom: 90px; z-index: 45;
+  border: 1px solid rgba(74,212,194,.5); background: rgba(74,212,194,.1);
+  color: var(--signal); font-family: var(--font-mono); font-size: 11px;
+  letter-spacing: .16em; text-transform: uppercase; padding: 12px 18px;
+  border-radius: 999px; cursor: pointer; opacity: 0; visibility: hidden; transition: .3s ease;
+}
+.replay-pill.show { opacity: 1; visibility: visible; }
+.replay-pill:hover { background: rgba(74,212,194,.18); }
+
+/* start overlay */
+.overlay {
+  position: absolute; inset: 0; z-index: 60; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; text-align: center;
+  background: radial-gradient(circle at 50% 38%, rgba(18,23,31,.94), rgba(4,6,9,.99) 70%), #040609;
+  transition: opacity .5s ease, visibility .5s ease;
+}
+.overlay.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+.overlay-kicker {
+  font-family: var(--font-mono); font-size: 13px; letter-spacing: .3em;
+  text-transform: uppercase; color: var(--signal);
+}
+.overlay h1 {
+  margin: 26px 0 0; font-family: var(--font-display); font-weight: 800;
+  font-size: 104px; line-height: .94; letter-spacing: -.05em;
+}
+.overlay h1 span { color: var(--signal); text-shadow: 0 0 60px rgba(74,212,194,.25); }
+.overlay-sub { margin: 26px 0 0; font-size: 22px; color: var(--mute); }
+.play {
+  position: relative; display: inline-flex; align-items: center; gap: 14px;
+  margin-top: 42px; border: 0; border-radius: 999px; padding: 20px 36px;
+  background: var(--signal); color: #06110f; font-family: var(--font-display);
+  font-weight: 800; font-size: 18px; letter-spacing: .02em; cursor: pointer;
+  transition: transform .25s ease, box-shadow .25s ease;
+  animation: playPulse 2.2s ease-in-out infinite;
+}
+.play:hover { transform: translateY(-2px) scale(1.02); }
+.play-icon {
+  width: 0; height: 0; border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent; border-left: 13px solid #06110f;
+}
+@keyframes playPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(74,212,194,.38); }
+  50% { box-shadow: 0 0 0 16px rgba(74,212,194,0); }
+}
+.overlay-hint {
+  margin: 30px 0 0; font-family: var(--font-mono); font-size: 11px;
+  letter-spacing: .18em; text-transform: uppercase; color: rgba(122,131,148,.8);
+}
+.overlay-cta {
+  margin-top: 20px; font-family: var(--font-mono); font-size: 12px;
+  letter-spacing: .14em; text-transform: uppercase; color: var(--signal);
+  text-decoration: none; border-bottom: 1px solid rgba(74,212,194,.35); padding-bottom: 4px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .grid, .orb, .live-dot, .portrait-ring, .end-avatar-ring, .scanline,
+  .glitch::before, .glitch::after, .play { animation: none !important; }
+}
+    </style>
+  </head>
+  <body>
+    <div id="viewport">
+      <div id="stage">
+        <div class="bg"></div>
+        <div class="grid"></div>
+        <div class="orb orb-a"></div>
+        <div class="orb orb-b"></div>
+        <div class="orb orb-c"></div>
+
+        <div class="corner tl"></div>
+        <div class="corner tr"></div>
+        <div class="corner bl"></div>
+        <div class="corner br"></div>
+
+        <header class="topbar" id="topbar">
+          <div class="brand">
+            <span class="live-dot"></span>
+            <span><b>Yousef Badr</b> · Showreel 2026</span>
+          </div>
+          <div class="top-right">
+            <span class="scene-label" id="sceneLabel">01 / Hook</span>
+            <div class="controls">
+              <button id="playPause" type="button">Pause</button>
+              <button id="replayBtn" type="button">Replay</button>
+              <button id="voiceBtn" type="button">Voice On</button>
+              <button id="musicBtn" type="button">Music On</button>
+              <button id="fsBtn" type="button">Fullscreen</button>
+            </div>
+          </div>
+        </header>
+
+        <main id="scenes">
+          <section class="scene" data-scene="0">
+            <div class="hook-wrap">
+              <div class="ghost">LIVE</div>
+              <div class="hook-badge anim fade" style="--d: .05s">
+                <span class="live-dot"></span>
+                Live from Cairo, Egypt
+              </div>
+              <h1 class="hook-line anim" style="--d: .15s">Most devs build demos.</h1>
+              <h1 class="hook-line signal anim" style="--d: .75s">
+                I ship <span class="glitch" data-text="LIVE">LIVE</span> products.
+              </h1>
+              <p class="hook-sub anim fade" style="--d: 1.5s">
+                Flutter engineer · 13 production apps
+              </p>
+            </div>
+          </section>
+
+          <section class="scene" data-scene="1">
+            <div class="intro">
+              <div class="portrait anim left" style="--d: .1s">
+                <div class="portrait-glow"></div>
+                <div class="portrait-ring"></div>
+                <img src="./me/youssef-avatar-3d.png" alt="Yousef Badr" />
+                <div class="scanline"></div>
+                <div class="portrait-tag">
+                  <span class="live-dot"></span>
+                  Broadcast active
+                </div>
+              </div>
+              <div class="intro-copy">
+                <div class="eyebrow anim" style="--d: .15s">Mid-level Flutter engineer</div>
+                <h2 class="big-name anim" style="--d: .25s">YOUSEF<br /><span>BADR</span></h2>
+                <p class="intro-role anim" style="--d: .5s">
+                  Production Flutter — <b>live streaming</b>, <b>sports media</b>,
+                  <b>payments</b>. I own apps end to end: architecture, streaming, store releases.
+                </p>
+                <div class="meta-row">
+                  <span class="hud-tag anim pop" style="--d: .7s">Cairo, Egypt</span>
+                  <span class="hud-tag anim pop" style="--d: .8s">TKDS MENA · Nov '25 – Present</span>
+                  <span class="hud-tag anim pop" style="--d: .9s">Zagazig University</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="scene" data-scene="2">
+            <div class="stats-head">
+              <div>
+                <div class="eyebrow anim" style="--d: .05s">The numbers</div>
+                <h2 class="section-title anim" style="--d: .15s">PRODUCTION, NOT PRACTICE.</h2>
+              </div>
+              <div class="hud-tag anim fade" style="--d: .35s">
+                <span class="live-dot"></span>
+                13 live right now
+              </div>
+            </div>
+            <div class="stats-grid">
+              <div class="stat anim" style="--d: .2s">
+                <div class="num"><span class="count" data-target="13">0</span></div>
+                <div class="label">Live products</div>
+                <div class="detail">App Store · Google Play · Microsoft Store</div>
+              </div>
+              <div class="stat anim" style="--d: .3s">
+                <div class="num"><span class="count" data-target="20">0</span><span class="plus">+</span></div>
+                <div class="label">Apps built</div>
+                <div class="detail">Production apps, end to end</div>
+              </div>
+              <div class="stat anim" style="--d: .4s">
+                <div class="num"><span class="count" data-target="4">0</span></div>
+                <div class="label">Platforms</div>
+                <div class="detail">iOS · Android · Windows · Web</div>
+              </div>
+              <div class="stat anim" style="--d: .5s">
+                <div class="num date">NOV '25</div>
+                <div class="label">TKDS MENA</div>
+                <div class="detail">Mid-level engineer · remote · broadcasting</div>
+              </div>
+            </div>
+            <div class="platform-strip anim fade" style="--d: .7s">
+              <span>App Store <b>·</b> Google Play <b>·</b> Microsoft Store</span>
+              <span>Flutter <b>·</b> Dart <b>·</b> Firebase <b>·</b> Payments</span>
+            </div>
+          </section>
+
+          <section class="scene" data-scene="3">
+            <div class="apps-head">
+              <div>
+                <div class="eyebrow anim" style="--d: .05s">The work</div>
+                <h2 class="section-title anim" style="--d: .15s">13 LIVE PRODUCTS.</h2>
+                <p class="section-sub anim" style="--d: .25s">Real users. Real stores. Real payments.</p>
+              </div>
+              <div class="apps-badge anim fade" style="--d: .35s">
+                <span class="live-dot"></span>
+                Live on 4 platforms
+              </div>
+            </div>
+
+            <div class="apps-grid">
+              <div class="app-card" style="--i: 0">
+                <img src="./apps/fizz-party.png" alt="Fizz Party" />
+                <div class="name">Fizz Party</div>
+                <div class="plat">iOS · Android</div>
+              </div>
+              <div class="app-card" style="--i: 1">
+                <img src="./apps/tkds-streamer.png" alt="TKDS Streamer" />
+                <div class="name">TKDS Streamer</div>
+                <div class="plat">iOS · Android</div>
+              </div>
+              <div class="app-card" style="--i: 2">
+                <img src="./apps/ngn.png" alt="National Golf Network" />
+                <div class="name">NGN</div>
+                <div class="plat">iOS · Android</div>
+              </div>
+              <div class="app-card" style="--i: 3">
+                <img src="./apps/tkds-media-core.png" alt="TKDS Sports" />
+                <div class="name">TKDS Sports</div>
+                <div class="plat">iOS · Android</div>
+              </div>
+              <div class="app-card" style="--i: 4">
+                <img src="./apps/bikmedia.png" alt="BikMedia" />
+                <div class="name">BikMedia</div>
+                <div class="plat">iOS · Android</div>
+              </div>
+              <div class="app-card" style="--i: 5">
+                <img src="./apps/tkds-radio.png" alt="TKDS Radio" />
+                <div class="name">TKDS Radio</div>
+                <div class="plat">Android</div>
+              </div>
+              <div class="app-card" style="--i: 6">
+                <img src="./apps/tkds-var.png" alt="TKDS VAR" />
+                <div class="name">TKDS VAR</div>
+                <div class="plat">Windows</div>
+              </div>
+              <div class="app-card" style="--i: 7">
+                <img src="./apps/pasty.png" alt="Pasty" />
+                <div class="name">Pasty</div>
+                <div class="plat">iOS · Android</div>
+              </div>
+              <div class="app-card" style="--i: 8">
+                <img src="./apps/sportsflix.png" alt="Sports Flix" />
+                <div class="name">Sports Flix</div>
+                <div class="plat">Android</div>
+              </div>
+              <div class="app-card" style="--i: 9">
+                <img src="./apps/maadi-sports.png" alt="Maadi Sports" />
+                <div class="name">Maadi Sports</div>
+                <div class="plat">Android</div>
+              </div>
+              <div class="app-card" style="--i: 10">
+                <img src="./apps/antlersn.png" alt="ASN TV" />
+                <div class="name">ASN TV</div>
+                <div class="plat">Android</div>
+              </div>
+              <div class="app-card" style="--i: 11">
+                <img src="./apps/southwest-ohio.png" alt="Southwest Ohio" />
+                <div class="name">Southwest Ohio</div>
+                <div class="plat">Android</div>
+              </div>
+              <div class="app-card" style="--i: 12">
+                <img src="./apps/playtoowin.png" alt="PlayTooWin" />
+                <div class="name">PlayTooWin</div>
+                <div class="plat">Web</div>
+              </div>
+            </div>
+
+            <div class="apps-foot anim fade" style="--d: 1.1s">
+              Also <b>Score Cue</b> — live scoring ops tool · <b>20+</b> apps built
+            </div>
+          </section>
+
+          <section class="scene" data-scene="4">
+            <div class="stack-wrap">
+              <div class="eyebrow anim" style="--d: .05s">The stack</div>
+              <h2 class="section-title anim" style="--d: .15s; font-size: 84px">BUILT FOR LIVE.</h2>
+              <p class="section-sub anim" style="--d: .25s">
+                The tools behind real-time broadcast and production apps.
+              </p>
+              <div class="chips">
+                <span class="chip hot" style="--i: 0">Flutter &amp; Dart</span>
+                <span class="chip" style="--i: 1">Clean Architecture</span>
+                <span class="chip" style="--i: 2">BLoC / Cubit</span>
+                <span class="chip" style="--i: 3">Riverpod</span>
+                <span class="chip hot" style="--i: 4">Agora RTC</span>
+                <span class="chip hot" style="--i: 5">WebRTC</span>
+                <span class="chip hot" style="--i: 6">NDI</span>
+                <span class="chip hot" style="--i: 7">RTMP</span>
+                <span class="chip" style="--i: 8">FFmpeg</span>
+                <span class="chip" style="--i: 9">Socket.IO</span>
+                <span class="chip" style="--i: 10">Firebase</span>
+                <span class="chip" style="--i: 11">REST APIs</span>
+                <span class="chip red" style="--i: 12">Payments</span>
+                <span class="chip red" style="--i: 13">Subscriptions</span>
+                <span class="chip red" style="--i: 14">In-app purchases</span>
+                <span class="chip" style="--i: 15">FCM</span>
+                <span class="chip" style="--i: 16">Hive</span>
+                <span class="chip" style="--i: 17">Git &amp; GitHub</span>
+                <span class="chip" style="--i: 18">Figma</span>
+              </div>
+              <div class="stack-foot anim fade" style="--d: 1.05s">
+                iOS <b>·</b> Android <b>·</b> Windows <b>·</b> Web <b>·</b> Android TV
+              </div>
+            </div>
+          </section>
+
+          <section class="scene" data-scene="5">
+            <div class="eyebrow anim" style="--d: .05s">The track record</div>
+            <h2 class="section-title anim" style="--d: .15s; font-size: 62px">EXPERIENCE + EDUCATION.</h2>
+            <div class="proof-grid">
+              <div class="timeline">
+                <div class="titem" style="--i: 0">
+                  <div>
+                    <span class="role">Mid-level Flutter Engineer</span>
+                    <span class="org">TKDS MENA</span>
+                    <span class="when">Nov '25 – Present</span>
+                  </div>
+                  <p>
+                    Remote · broadcasting &amp; streaming. 10 production apps on the TKDS Media Core
+                    platform — live streaming, sports networks, radio, and VAR.
+                  </p>
+                </div>
+                <div class="titem" style="--i: 1">
+                  <div>
+                    <span class="role">Flutter Engineer</span>
+                    <span class="org">BikMedia</span>
+                    <span class="when">Product / contract</span>
+                  </div>
+                  <p>
+                    iOS &amp; Android live social. Agora RTC, Nosmai filters, WebRTC filter pipeline,
+                    and performance hardening for low-end devices.
+                  </p>
+                </div>
+                <div class="titem" style="--i: 2">
+                  <div>
+                    <span class="role">Flutter Developer Intern</span>
+                    <span class="org">DEPI</span>
+                    <span class="when">Jul '25 · 6 months</span>
+                  </div>
+                  <p>Java, OOP, Flutter, and mobile architecture on national-initiative projects.</p>
+                </div>
+                <div class="titem" style="--i: 3">
+                  <div>
+                    <span class="role">Flutter Developer Intern</span>
+                    <span class="org">Route Academy</span>
+                    <span class="when">Sep '24 · 6 months</span>
+                  </div>
+                  <p>Provider, Cubit, Firebase, REST, and Clean Architecture on real scenarios.</p>
+                </div>
+                <div class="titem" style="--i: 4">
+                  <div>
+                    <span class="role">Mobile Developer Intern</span>
+                    <span class="org">Digital HUB</span>
+                    <span class="when">Jun '24 · 1 month</span>
+                  </div>
+                  <p>Cross-platform mobile fundamentals and user-centred UI/UX.</p>
+                </div>
+              </div>
+
+              <div class="edu-card anim right" style="--d: .35s">
+                <div class="uni">Zagazig University</div>
+                <div class="faculty">Faculty of Engineering</div>
+                <div class="major">Computer Engineering</div>
+                <div class="year">3rd year · Very Good · Oct 2022 – Aug 2027</div>
+                <div class="edu-divider"></div>
+                <div class="edu-row"><span>Location</span><b>Cairo, Egypt</b></div>
+                <div class="edu-row"><span>Languages</span><b>Arabic (native) · English (intermediate)</b></div>
+                <div class="edu-row"><span>Focus</span><b>Production Flutter · realtime media</b></div>
+              </div>
+            </div>
+          </section>
+
+          <section class="scene" data-scene="6">
+            <div class="eyebrow anim" style="--d: .05s">The proof</div>
+            <h2 class="statement anim" style="--d: .15s">
+              SHIPPED, NOT<br /><span>TUTORIAL WORK.</span>
+            </h2>
+            <div class="stores">
+              <div class="store" style="--i: 0">
+                <div class="platform">App Store</div>
+                <div class="os">iOS</div>
+                <div class="status">Live now</div>
+                <p>Fizz Party · TKDS Streamer · NGN · BikMedia · Pasty · TKDS Sports</p>
+              </div>
+              <div class="store" style="--i: 1">
+                <div class="platform">Google Play</div>
+                <div class="os">Android</div>
+                <div class="status">10+ live apps</div>
+                <p>Fizz Party · TKDS Radio · Sports Flix · Maadi · ASN TV · Southwest Ohio</p>
+              </div>
+              <div class="store" style="--i: 2">
+                <div class="platform">Microsoft Store</div>
+                <div class="os">Windows</div>
+                <div class="status">Published</div>
+                <p>TKDS VAR — professional video review for live sports, with NDI and FFmpeg.</p>
+              </div>
+            </div>
+            <div class="proof-strip anim fade" style="--d: .65s">
+              <span><b>13</b> live products</span>
+              <span><b>20+</b> apps built</span>
+              <span><b>4</b> platforms</span>
+              <span><b>Production</b> Flutter, end to end</span>
+            </div>
+          </section>
+
+          <section class="scene" data-scene="7">
+            <div class="end">
+              <div class="end-avatar-wrap anim left" style="--d: .1s">
+                <div class="end-avatar-ring"></div>
+                <div class="end-avatar">
+                  <img src="./me/youssef-avatar-3d.png" alt="Yousef Badr" />
+                </div>
+              </div>
+              <div>
+                <div class="eyebrow anim" style="--d: .1s">Open to opportunities</div>
+                <h2 class="end-title anim" style="--d: .2s">
+                  LET'S BUILD SOMETHING<br /><span>THAT GOES LIVE.</span>
+                </h2>
+                <div class="end-name anim" style="--d: .35s">
+                  Yousef Badr <span>Mid-level Flutter Engineer · Cairo, Egypt</span>
+                </div>
+                <div class="contact-grid">
+                  <div class="contact-item anim fade" style="--d: .45s">
+                    <span class="k">Email</span>
+                    <span class="v">yousefhasham512@gmail.com</span>
+                  </div>
+                  <div class="contact-item anim fade" style="--d: .5s">
+                    <span class="k">Phone</span>
+                    <span class="v">+20 114 606 6036</span>
+                  </div>
+                  <div class="contact-item anim fade" style="--d: .55s">
+                    <span class="k">GitHub</span>
+                    <span class="v">github.com/YoussefBaderelden</span>
+                  </div>
+                  <div class="contact-item anim fade" style="--d: .6s">
+                    <span class="k">LinkedIn</span>
+                    <span class="v">linkedin.com/in/yousef-bader-el-den</span>
+                  </div>
+                </div>
+                <div class="end-url anim" style="--d: .7s">youssefbaderelden.github.io</div>
+                <div class="end-note anim fade" style="--d: .8s">
+                  Remote · Arabic (native) · English (intermediate) · App Store · Google Play · Microsoft Store
+                </div>
+              </div>
+            </div>
+          </section>
+        </main>
+
+        <div class="caption" id="caption"></div>
+        <div class="progress"><div class="bar" id="bar"></div></div>
+        <div class="timecode" id="timecode">0:00 / 1:00</div>
+        <button class="replay-pill" id="replayPill" type="button">Replay 60s</button>
+
+        <div class="grain"></div>
+        <div class="scanlines"></div>
+        <div class="vignette"></div>
+
+        <div class="overlay" id="overlay">
+          <div class="overlay-kicker">Yousef Badr · Showreel 2026</div>
+          <h1>60 SECONDS.<br /><span>13 LIVE PRODUCTS.</span></h1>
+          <p class="overlay-sub">Mid-level Flutter engineer · Cairo, Egypt</p>
+          <button class="play" id="playBtn" type="button">
+            <span class="play-icon"></span>
+            Play showreel
+          </button>
+          <p class="overlay-hint">Sound on · 16:9 · Fullscreen for the cleanest recording</p>
+          <a class="overlay-cta" href="https://youssefbaderelden.github.io/" target="_blank" rel="noreferrer">
+            Open the portfolio
+          </a>
+        </div>
+
+      </div>
+    </div>
+    <script>
+(function () {
+  "use strict";
+
+  var stage = document.getElementById("stage");
+  var scenes = Array.prototype.slice.call(document.querySelectorAll(".scene"));
+  var captionEl = document.getElementById("caption");
+  var labelEl = document.getElementById("sceneLabel");
+  var barEl = document.getElementById("bar");
+  var timeEl = document.getElementById("timecode");
+  var overlay = document.getElementById("overlay");
+  var playBtn = document.getElementById("playBtn");
+  var playPause = document.getElementById("playPause");
+  var replayBtn = document.getElementById("replayBtn");
+  var replayPill = document.getElementById("replayPill");
+  var voiceBtn = document.getElementById("voiceBtn");
+  var musicBtn = document.getElementById("musicBtn");
+  var fsBtn = document.getElementById("fsBtn");
+  var topbar = document.getElementById("topbar");
+
+  var TOTAL = 60;
+  var SCENES = [
+    {
+      start: 0,
+      end: 5,
+      label: "01 / Hook",
+      text: "Most Flutter developers build demos. I ship live products.",
+      say: "Most Flutter developers build demos. I ship live products."
+    },
+    {
+      start: 5,
+      end: 12,
+      label: "02 / Who",
+      text: "I'm Yousef Badr — mid-level Flutter engineer in Cairo. At TKDS MENA I own production apps end to end.",
+      say: "I'm Yousef Badr, mid-level Flutter engineer in Cairo. At T K D S MENA, I own production apps end to end."
+    },
+    {
+      start: 12,
+      end: 20,
+      label: "03 / Numbers",
+      text: "13 live products. 20+ apps built. 4 platforms: iOS, Android, Windows, web.",
+      say: "Thirteen live products. Twenty plus apps built. Four platforms: iOS, Android, Windows, and web."
+    },
+    {
+      start: 20,
+      end: 32,
+      label: "04 / The work",
+      text: "Fizz Party · TKDS Streamer · NGN · BikMedia · Pasty · TKDS Radio · TKDS Sports · TKDS VAR — real users, real stores, real payments.",
+      say: "Fizz Party. T K D S Streamer. N G N. BikMedia. Pasty. T K D S Radio. T K D S Sports. T K D S VAR. Real users, real stores, real payments."
+    },
+    {
+      start: 32,
+      end: 40,
+      label: "05 / The stack",
+      text: "Agora · WebRTC · NDI · RTMP · FFmpeg · Firebase · BLoC · Riverpod · Clean Architecture.",
+      say: "Agora. Web R T C. N D I. R T M P. F F mpeg. Firebase. Block. Riverpod. Clean architecture."
+    },
+    {
+      start: 40,
+      end: 47,
+      label: "06 / Track record",
+      text: "Zagazig University computer engineering → broadcast tools for sports networks and live platforms.",
+      say: "From Zagazig University computer engineering, to broadcast tools for sports networks and live platforms."
+    },
+    {
+      start: 47,
+      end: 53,
+      label: "07 / Proof",
+      text: "Published on the App Store, Google Play, and Microsoft Store. Shipped, not tutorial work.",
+      say: "Published on the App Store, Google Play, and Microsoft Store. Shipped, not tutorial work."
+    },
+    {
+      start: 53,
+      end: 60,
+      label: "08 / Contact",
+      text: "Looking for a Flutter engineer who ships? Let's talk. youssefbaderelden.github.io",
+      say: "Looking for a Flutter engineer who ships? Let's talk. youssef bader elden dot github dot io."
+    }
+  ];
+
+  var current = 0;
+  var playing = false;
+  var finished = false;
+  var active = -1;
+  var lastTs = 0;
+  var voiceOn = true;
+  var musicOn = true;
+  var voices = [];
+  var audioCtx = null;
+  var master = null;
+  var nextBeat = 0;
+  var nextHat = 0;
+  var hatBuf = null;
+  var idleTimer = null;
+
+  function fit() {
+    var scale = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+    var x = (window.innerWidth - 1920 * scale) / 2;
+    var y = (window.innerHeight - 1080 * scale) / 2;
+    stage.style.transform = "translate(" + x + "px," + y + "px) scale(" + scale + ")";
+  }
+  window.addEventListener("resize", fit);
+  fit();
+
+  function fmt(s) {
+    var m = Math.floor(s / 60);
+    var sec = Math.floor(s % 60);
+    return m + ":" + String(sec).padStart(2, "0");
+  }
+
+  function pickVoice() {
+    if ("speechSynthesis" in window && voices.length === 0) {
+      voices = window.speechSynthesis.getVoices();
+    }
+    if (!voices.length) return null;
+    var prefs = [
+      "Google UK English Male",
+      "Microsoft Guy",
+      "Daniel",
+      "Alex",
+      "Google US English"
+    ];
+    for (var i = 0; i < prefs.length; i++) {
+      var found = voices.filter(function (v) {
+        return v.name.indexOf(prefs[i]) !== -1;
+      })[0];
+      if (found) return found;
+    }
+    return voices.filter(function (v) {
+      return /^en/i.test(v.lang);
+    })[0] || null;
+  }
+
+  function speak(text) {
+    if (!voiceOn || !("speechSynthesis" in window)) return;
+    try {
+      window.speechSynthesis.cancel();
+      var u = new SpeechSynthesisUtterance(text);
+      var v = pickVoice();
+      if (v) u.voice = v;
+      u.rate = 1.02;
+      u.pitch = 0.95;
+      u.volume = 1;
+      window.speechSynthesis.speak(u);
+    } catch (e) {}
+  }
+
+  function activate(i) {
+    if (i === active) return;
+    active = i;
+    scenes.forEach(function (el, idx) {
+      el.classList.toggle("active", idx === i);
+    });
+    var sc = SCENES[i];
+    labelEl.textContent = sc.label;
+    captionEl.textContent = sc.text;
+    if (playing && voiceOn) speak(sc.say || sc.text);
+  }
+
+  function updateCounters() {
+    var sc = SCENES[2];
+    var p = Math.max(0, Math.min(1, (current - sc.start - 0.25) / 1.7));
+    var eased = 1 - Math.pow(1 - p, 3);
+    document.querySelectorAll(".count").forEach(function (el) {
+      var target = parseInt(el.getAttribute("data-target"), 10);
+      el.textContent = String(Math.round(target * eased));
+    });
+  }
+
+  function update() {
+    if (!playing) return;
+    var idx = -1;
+    for (var i = 0; i < SCENES.length; i++) {
+      if (current >= SCENES[i].start && current < SCENES[i].end) {
+        idx = i;
+        break;
+      }
+    }
+    if (idx === -1) idx = SCENES.length - 1;
+    activate(idx);
+    if (idx === 2) updateCounters();
+    barEl.style.width = Math.min(100, (current / TOTAL) * 100) + "%";
+    timeEl.textContent = fmt(current) + " / 1:00";
+    if (current >= TOTAL) finish();
+  }
+
+  function loop(ts) {
+    if (!playing) return;
+    if (!lastTs) lastTs = ts;
+    var dt = Math.min(0.12, (ts - lastTs) / 1000);
+    lastTs = ts;
+    current = Math.min(TOTAL, current + dt);
+    update();
+    if (playing) requestAnimationFrame(loop);
+  }
+
+  function initAudio() {
+    if (audioCtx) return;
+    var AC = window.AudioContext || window.webkitAudioContext;
+    if (!AC) return;
+    audioCtx = new AC();
+    master = audioCtx.createGain();
+    master.gain.value = musicOn ? 0.5 : 0;
+    master.connect(audioCtx.destination);
+
+    var pad = audioCtx.createGain();
+    pad.gain.value = 0.03;
+    var filt = audioCtx.createBiquadFilter();
+    filt.type = "lowpass";
+    filt.frequency.value = 380;
+    var o1 = audioCtx.createOscillator();
+    o1.type = "sawtooth";
+    o1.frequency.value = 55;
+    var o2 = audioCtx.createOscillator();
+    o2.type = "sine";
+    o2.frequency.value = 110;
+    o1.connect(filt);
+    o2.connect(filt);
+    filt.connect(pad);
+    pad.connect(master);
+    o1.start();
+    o2.start();
+
+    hatBuf = audioCtx.createBuffer(1, Math.floor(audioCtx.sampleRate * 0.05), audioCtx.sampleRate);
+    var data = hatBuf.getChannelData(0);
+    for (var i = 0; i < data.length; i++) {
+      data[i] = (Math.random() * 2 - 1) * (1 - i / data.length);
+    }
+
+    nextBeat = audioCtx.currentTime + 0.2;
+    nextHat = audioCtx.currentTime + 0.2;
+    window.setInterval(scheduleMusic, 80);
+  }
+
+  function scheduleMusic() {
+    if (!audioCtx || !musicOn || !playing || audioCtx.state !== "running") return;
+    var now = audioCtx.currentTime;
+    if (nextBeat < now) nextBeat = now + 0.05;
+    if (nextHat < now) nextHat = now + 0.05;
+    while (nextBeat < now + 0.25) {
+      kick(nextBeat);
+      nextBeat += 0.5;
+    }
+    while (nextHat < now + 0.25) {
+      hat(nextHat);
+      nextHat += 0.25;
+    }
+  }
+
+  function kick(t) {
+    var o = audioCtx.createOscillator();
+    var g = audioCtx.createGain();
+    o.type = "sine";
+    o.frequency.setValueAtTime(145, t);
+    o.frequency.exponentialRampToValueAtTime(42, t + 0.16);
+    g.gain.setValueAtTime(0.12, t);
+    g.gain.exponentialRampToValueAtTime(0.001, t + 0.22);
+    o.connect(g);
+    g.connect(master);
+    o.start(t);
+    o.stop(t + 0.24);
+  }
+
+  function hat(t) {
+    var src = audioCtx.createBufferSource();
+    src.buffer = hatBuf;
+    var hp = audioCtx.createBiquadFilter();
+    hp.type = "highpass";
+    hp.frequency.value = 7000;
+    var g = audioCtx.createGain();
+    g.gain.value = 0.022;
+    src.connect(hp);
+    hp.connect(g);
+    g.connect(master);
+    src.start(t);
+  }
+
+  function play() {
+    if (finished || current >= TOTAL) reset();
+    if (playing) return;
+    playing = true;
+    finished = false;
+    lastTs = 0;
+    overlay.classList.add("hidden");
+    playPause.textContent = "Pause";
+    document.body.classList.add("playing");
+
+    initAudio();
+    if (audioCtx) {
+      if (audioCtx.state === "suspended") audioCtx.resume();
+      if (master) master.gain.setTargetAtTime(musicOn ? 0.5 : 0, audioCtx.currentTime, 0.05);
+      if (nextBeat < audioCtx.currentTime) nextBeat = audioCtx.currentTime;
+      if (nextHat < audioCtx.currentTime) nextHat = audioCtx.currentTime;
+    }
+    if (voiceOn && "speechSynthesis" in window) window.speechSynthesis.resume();
+    if (active === -1) {
+      activate(0);
+    } else if ("speechSynthesis" in window) {
+      window.speechSynthesis.resume();
+    }
+
+    showControls();
+    requestAnimationFrame(loop);
+  }
+
+  function pause() {
+    if (!playing) return;
+    playing = false;
+    playPause.textContent = "Play";
+    if ("speechSynthesis" in window) window.speechSynthesis.pause();
+    if (audioCtx) audioCtx.suspend();
+    showControls();
+    clearTimeout(idleTimer);
+  }
+
+  function reset() {
+    playing = false;
+    finished = false;
+    current = 0;
+    active = -1;
+    lastTs = 0;
+    if ("speechSynthesis" in window) window.speechSynthesis.cancel();
+    barEl.style.width = "0%";
+    timeEl.textContent = "0:00 / 1:00";
+    captionEl.textContent = "";
+    scenes.forEach(function (el) {
+      el.classList.remove("active");
+    });
+    document.querySelectorAll(".count").forEach(function (el) {
+      el.textContent = "0";
+    });
+    replayPill.classList.remove("show");
+    playPause.textContent = "Pause";
+  }
+
+  function replay() {
+    reset();
+    play();
+  }
+
+  function finish() {
+    playing = false;
+    finished = true;
+    current = TOTAL;
+    barEl.style.width = "100%";
+    timeEl.textContent = "1:00 / 1:00";
+    if (audioCtx && master) master.gain.setTargetAtTime(0, audioCtx.currentTime, 0.4);
+    playPause.textContent = "Play";
+    replayPill.classList.add("show");
+    showControls();
+    document.body.classList.remove("playing");
+  }
+
+  function toggleMusic() {
+    musicOn = !musicOn;
+    musicBtn.textContent = musicOn ? "Music On" : "Music Off";
+    musicBtn.classList.toggle("off", !musicOn);
+    if (audioCtx && master) {
+      master.gain.setTargetAtTime(musicOn ? 0.5 : 0, audioCtx.currentTime, 0.08);
+      if (musicOn) {
+        nextBeat = audioCtx.currentTime;
+        nextHat = audioCtx.currentTime;
+      }
+    }
+  }
+
+  function toggleVoice() {
+    voiceOn = !voiceOn;
+    voiceBtn.textContent = voiceOn ? "Voice On" : "Voice Off";
+    voiceBtn.classList.toggle("off", !voiceOn);
+    if (!("speechSynthesis" in window)) return;
+    if (!voiceOn) {
+      window.speechSynthesis.cancel();
+    } else if (playing && active >= 0) {
+      speak(SCENES[active].say || SCENES[active].text);
+    }
+  }
+
+  function toggleFs() {
+    try {
+      if (!document.fullscreenElement) {
+        var req = document.documentElement.requestFullscreen;
+        if (req) {
+          var p = req.call(document.documentElement);
+          if (p && p.catch) p.catch(function () {});
+        }
+      } else if (document.exitFullscreen) {
+        document.exitFullscreen();
+      }
+    } catch (e) {}
+  }
+
+  function showControls() {
+    topbar.classList.remove("hide");
+    document.body.style.cursor = "default";
+    clearTimeout(idleTimer);
+    if (playing) {
+      idleTimer = window.setTimeout(function () {
+        topbar.classList.add("hide");
+        document.body.style.cursor = "none";
+      }, 2200);
+    }
+  }
+
+  playBtn.addEventListener("click", play);
+  playPause.addEventListener("click", function () {
+    if (playing) pause();
+    else play();
+  });
+  replayBtn.addEventListener("click", replay);
+  replayPill.addEventListener("click", replay);
+  voiceBtn.addEventListener("click", toggleVoice);
+  musicBtn.addEventListener("click", toggleMusic);
+  fsBtn.addEventListener("click", toggleFs);
+
+  document.addEventListener("mousemove", showControls);
+
+  document.addEventListener("keydown", function (e) {
+    if (e.code === "Space") {
+      e.preventDefault();
+      if (overlay.classList.contains("hidden")) {
+        if (playing) pause();
+        else play();
+      } else {
+        play();
+      }
+    } else if (e.key === "r" || e.key === "R") {
+      replay();
+    } else if (e.key === "f" || e.key === "F") {
+      toggleFs();
+    }
+  });
+
+  if ("speechSynthesis" in window) {
+    voices = window.speechSynthesis.getVoices();
+    window.speechSynthesis.onvoiceschanged = function () {
+      voices = window.speechSynthesis.getVoices();
+    };
+  }
+
+  var params = new URLSearchParams(window.location.search);
+  if (params.has("t")) {
+    var t = Math.max(0, Math.min(TOTAL - 0.1, parseFloat(params.get("t")) || 0));
+    current = t;
+    overlay.classList.add("hidden");
+    var startIdx = 0;
+    for (var si = 0; si < SCENES.length; si++) {
+      if (t >= SCENES[si].start && t < SCENES[si].end) {
+        startIdx = si;
+        break;
+      }
+    }
+    active = -1;
+    activate(startIdx);
+    if (startIdx === 2) updateCounters();
+    barEl.style.width = (t / TOTAL) * 100 + "%";
+    timeEl.textContent = fmt(t) + " / 1:00";
+    if (params.get("clean") === "1") {
+      topbar.style.display = "none";
+    }
+  }
+})();
+    </script>
+  </body>
+</html>

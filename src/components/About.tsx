@@ -37,15 +37,16 @@ export function About() {
             broadcasting company — not intern tasks.
           </p>
           <p>
-            Across my work, <span className="font-semibold text-signal">11 apps are live</span> on
-            Android or iOS: Fizz Party, TKDS Streamer, NGN, TKDS Sports, BikMedia, Pasty, TKDS
-            Radio, Maadi Sports, ASN TV, Sports Flix, and Southwest Ohio.
+            Across my work, <span className="font-semibold text-signal">13 apps are live</span> across
+            iOS, Android, Windows and web: Fizz Party, TKDS Streamer, NGN, TKDS Sports, BikMedia,
+            Pasty, TKDS Radio, Maadi Sports, ASN TV, Sports Flix, Southwest Ohio, TKDS VAR, and
+            PlayTooWin.
           </p>
 
           {/* Quick stats row */}
           <div className="mt-8 grid grid-cols-3 gap-4 rounded-2xl border border-line bg-panel/60 p-5">
             <div>
-              <p className="font-display text-2xl text-signal">11</p>
+              <p className="font-display text-2xl text-signal">13</p>
               <p className="font-mono text-[10px] uppercase tracking-wider text-mute">LIVE APPS</p>
             </div>
             <div>

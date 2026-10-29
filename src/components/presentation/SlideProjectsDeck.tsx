@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { liveApps, type Project } from "../../data";
+import { projects, publishedBadge, type Project } from "../../data";
 
 interface SlideProjectsDeckProps {
   onSelectProject: (p: Project) => void;
@@ -15,10 +15,11 @@ export function SlideProjectsDeck({
   onSelectProject,
   onAccentChange,
 }: SlideProjectsDeckProps) {
-  const deckApps = liveApps;
+  const deckApps = projects;
   const [activeIndex, setActiveIndex] = useState(0);
 
   const activeProject = deckApps[activeIndex];
+  const activeBadge = publishedBadge(activeProject);
 
   const handleNext = () => {
     const nextIdx = (activeIndex + 1) % deckApps.length;
@@ -129,7 +130,7 @@ export function SlideProjectsDeck({
                   color: "#0a1118",
                 }}
               >
-                <span>📁 // {pad(activeProject.liveNo ?? activeIndex + 1)}</span>
+                <span>📁 // {pad(activeIndex + 1)}</span>
                 <span className="opacity-75">[{activeProject.category}]</span>
               </div>
 
@@ -157,6 +158,11 @@ export function SlideProjectsDeck({
                     {activeProject.microsoftStore && (
                       <span className="rounded-full border border-signal/40 bg-signal/10 px-2 py-0.5 font-mono text-[9px] sm:text-[10px] text-signal">
                         MS Store
+                      </span>
+                    )}
+                    {activeBadge && (
+                      <span className="rounded-full border border-line bg-panel/60 px-2 py-0.5 font-mono text-[9px] sm:text-[10px] text-mute">
+                        {activeBadge}
                       </span>
                     )}
                   </div>
@@ -215,6 +221,26 @@ export function SlideProjectsDeck({
                         className="rounded-full border border-line bg-panel/60 px-3.5 py-2 font-mono text-[11px] sm:text-xs text-ink transition-all hover:border-signal hover:text-signal"
                       >
                         Android
+                      </a>
+                    )}
+                    {activeProject.microsoftStore && (
+                      <a
+                        href={activeProject.microsoftStore}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="rounded-full border border-line bg-panel/60 px-3.5 py-2 font-mono text-[11px] sm:text-xs text-ink transition-all hover:border-signal hover:text-signal"
+                      >
+                        Windows
+                      </a>
+                    )}
+                    {activeProject.website && (
+                      <a
+                        href={activeProject.website}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="rounded-full border border-line bg-panel/60 px-3.5 py-2 font-mono text-[11px] sm:text-xs text-ink transition-all hover:border-signal hover:text-signal"
+                      >
+                        Web
                       </a>
                     )}
                   </div>
